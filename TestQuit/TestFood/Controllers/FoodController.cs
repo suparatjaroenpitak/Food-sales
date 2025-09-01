@@ -12,72 +12,91 @@ public class FoodController : Controller
     {
         _foodService = foodService;
     }
-    public ActionResult Index()
+
+    public IActionResult Index()
     {
         var allFoods = _foodService.Sort("");
         return View(allFoods);
     }
-    public ActionResult Create()
-    {
-        return View();
-    }
+
     [HttpPost]
-    public ActionResult Create(Food food)
+    public IActionResult Create([FromBody] Food food)
     {
-        if (ModelState.IsValid)
+        if (food == null)
+            return Json(new { success = false, message = "ข้อมูลว่าง" });
+
+        try
         {
             var message = _foodService.Create(food);
-            TempData["Message"] = message;
-            return RedirectToAction("Index");
+            return Json(new { success = true, message });
         }
-        return View(food);
-    }
-    public ActionResult Edit(string productId)
-    {
-        var foodList = _foodService.Search(productId);
-        var food = foodList.Count > 0 ? foodList[0] : null;
-
-        if (food == null)
-            return View();
-
-        return View(food);
-    }
-    [HttpPost]
-    public ActionResult Edit(Food food)
-    {
-        if (ModelState.IsValid)
+        catch (Exception ex)
         {
-            var message = _foodService.Edit(food);
-            TempData["Message"] = message;
-            return RedirectToAction("Index");
+            return Json(new { success = false, message = ex.Message });
         }
-        return View(food);
     }
-
     [HttpPost]
-    public ActionResult Delete(string productId)
+    public IActionResult Edit(string orderDate, string region, string product, string quantity, decimal unitPrice)
     {
-        var message = _foodService.Delete(productId);
-        TempData["Message"] = message;
-        return RedirectToAction("Index");
+        // Validate the received data
+        if (string.IsNullOrEmpty(product))
+        {
+            return Json(new { success = false, message = "ข้อมูลไม่ถูกต้อง" });
+        }
+
+        // Create a Food object from the received parameters
+        var foodToEdit = new Food
+        {
+            Region = region,
+            Product = product,
+            Quantity = quantity,
+            UnitPrice = unitPrice,
+            TotalPrice = decimal.Parse(quantity) * unitPrice
+        };
+
+        try
+        {
+            var message = _foodService.Edit(foodToEdit);
+            return Json(new { success = true, message });
+        }
+        catch (Exception ex)
+        {
+            return Json(new { success = false, message = ex.Message });
+        }
     }
 
-    public ActionResult Sort(string product)
+    // ปรับปรุงเมธอด Delete เพื่อรับข้อมูลเป็น Food object
+    [HttpPost]
+    public IActionResult Delete([FromForm] Food food)
     {
-        var sortedList = _foodService.Sort(product);
-        return View("Index", sortedList);
+        if (food == null || string.IsNullOrEmpty(food.Product))
+            return Json(new { success = false, message = "ข้อมูลว่างหรือ Product ไม่ถูกต้อง" });
+
+        try
+        {
+            // ส่ง Food object ที่มี OrderDate, Region, และ Product ไปยัง service
+            var message = _foodService.Delete(food);
+            return Json(new { success = true, message });
+        }
+        catch (Exception ex)
+        {
+            return Json(new { success = false, message = ex.Message });
+        }
     }
 
-    public ActionResult Search(string product)
+    [HttpGet]
+    public IActionResult Search(string product)
     {
         var searchResult = _foodService.Search(product);
-        return View("Index", searchResult);
+
+        // Return the search result as a JSON object
+        return Json(searchResult);
     }
 
-    public ActionResult Filter(string date)
+    [HttpGet]
+    public IActionResult Filter(string date)
     {
         var filterResult = _foodService.fillter(date);
-        return View("Index", filterResult);
+        return PartialView("_FoodTable", filterResult);
     }
-
 }

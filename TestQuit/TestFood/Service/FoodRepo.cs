@@ -25,15 +25,17 @@ namespace TestQuit.Service
         {
             return GetFoodFromExcel();
         }
+
         public string Create(Food food)
         {
             AppendFoodToExcel(food);
             return "บันทึกสำเร็จ";
         }
 
-        public string Delete(string productId)
+        // เมธอด Delete ที่ปรับปรุงใหม่ให้รับ Food object
+        public string Delete(Food food)
         {
-            DeleteFoodByProduct(productId);
+            DeleteFoodFromExcel(food);
             return "ลบสำเร็จ";
         }
 
@@ -153,8 +155,7 @@ namespace TestQuit.Service
                 string region = ReadCell<string>(worksheet.Cells[row, 2]);
                 string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
-                if (date.HasValue && date.Value.Date == food.OrderDate.Date &&
-                    region == food.Region && product == food.Product)
+                if ( region == food.Region && product == food.Product)
                 {
                     worksheet.Cells[row, 6].Value = food.Quantity;
                     worksheet.Cells[row, 7].Value = food.UnitPrice;
@@ -168,7 +169,7 @@ namespace TestQuit.Service
             package.Save();
         }
 
-        private void DeleteFoodByProduct(string productToDelete)
+        private void DeleteFoodFromExcel(Food foodToDelete)
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(FilePath));
@@ -179,15 +180,22 @@ namespace TestQuit.Service
 
             for (int row = rowCount; row >= 2; row--)
             {
+                // อ่านข้อมูล OrderDate, Region, และ Product จากแถวปัจจุบัน
+                DateTime? orderDate = ReadCell<DateTime?>(worksheet.Cells[row, 1]);
+                string region = ReadCell<string>(worksheet.Cells[row, 2]);
                 string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
-                if (product == productToDelete)
+                // ตรวจสอบความถูกต้องของข้อมูลทั้งหมด
+                if (orderDate.HasValue && orderDate.Value.Date == foodToDelete.OrderDate.Date &&
+                    region == foodToDelete.Region && product == foodToDelete.Product)
                 {
                     worksheet.DeleteRow(row);
-                    Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{productToDelete}'");
+                    Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{foodToDelete.Product}'");
+                    break; // หยุดการทำงานทันทีหลังจากพบและลบแถวแล้ว
                 }
             }
 
+            // บันทึกไฟล์ Excel
             package.Save();
         }
 

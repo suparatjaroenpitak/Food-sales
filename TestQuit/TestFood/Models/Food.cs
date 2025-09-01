@@ -4,7 +4,7 @@ namespace TestQuit.Models
 {
     public class Food
     {
-        public DateTime OrderDate { get; set; }
+        public DateTime OrderDate { get; set; } = DateTime.Now;
         public string Region { get; set; }
         public string City { get; set; }
         public string Category { get; set; }

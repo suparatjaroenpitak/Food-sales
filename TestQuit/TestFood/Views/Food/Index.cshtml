@@ -23,8 +23,12 @@
 
 
     <button id="btnRefresh">Refresh</button>
+    <div class="toolbar">
+    <button id="btnCreate">Create New</button>
+</div>
 </div>
 
+<div id="message"></div>
 <table id="foodTable">
     <thead>
         <tr>
@@ -53,21 +57,34 @@
                 <td>@food.TotalPrice</td>
                 <td>
                     <button class="btnEdit"
+                            data-orderdate="@food.OrderDate.ToString("yyyy-MM-dd")"
+                            data-region="@food.Region"
+                            data-city="@food.City"
+                            data-category="@food.Category"
                             data-product="@food.Product"
                             data-quantity="@food.Quantity"
-                            data-unitprice="@food.UnitPrice">
+                            data-unitprice="@food.UnitPrice"
+                            data-totalprice="@food.TotalPrice">
                         Edit
                     </button>
-                    <button class="btnDelete" data-product="@food.Product">Delete</button>
+                    <button class="btnDelete"
+                            data-orderdate="@food.OrderDate.ToString("yyyy-MM-dd")"
+                            data-region="@food.Region"
+                            data-product="@food.Product">
+                        Delete
+                    </button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<div id="editModal">
+<div id="editModal" style="display: none;">
     <h3>แก้ไขข้อมูล</h3>
-    <input type="hidden" id="editProductId" />
+
+    <input type="hidden" id="editOrderDate" />
+    <input type="hidden" id="editRegion" />
+    <input type="hidden" id="editProduct" />
 
     <label>Quantity:</label>
     <input type="text" id="editQuantity" />
@@ -78,8 +95,28 @@
     <button id="btnSaveEdit">Save</button>
     <button id="btnCancelEdit">Cancel</button>
 </div>
+<div id="createModal" style="display: none;">
+    <h3>สร้างข้อมูลใหม่</h3>
+    <form id="createForm">
+        <label>OrderDate:</label>
+        <input type="text" id="createOrderDate" />
+        <label>Region:</label>
+        <input type="text" id="createRegion" />
+        <label>City:</label>
+        <input type="text" id="createCity" />
+        <label>Category:</label>
+        <input type="text" id="createCategory" />
+        <label>Product:</label>
+        <input type="text" id="createProduct" />
+        <label>Quantity:</label>
+        <input type="text" id="createQuantity" />
+        <label>UnitPrice:</label>
+        <input type="text" id="createUnitPrice" />
 
-<div id="message"></div>
+        <button type="button" id="btnSaveCreate">Save</button>
+        <button type="button" id="btnCancelCreate">Cancel</button>
+    </form>
+</div>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -88,132 +125,319 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-datepicker/1.13.2/i18n/datepicker-th.min.js"></script>
     <script>
         $(function () {
+        
+            $("#btnCreate").click(function () {
+                alert("6666666")
+     $("#createModal").fadeIn();
+});
 
+            $("#btnCancelCreate").click(function () {
+            $("#createModal").fadeOut();
+            $("#createForm")[0].reset(); // Clear the form fields
+        });
+            $("#btnSaveCreate").click(function () {
+                var orderDate = $("#createOrderDate").val();
+                var orderDateFormatted = "";
 
-                    $("#filterDate").datepicker({
-            dateFormat: 'dd/mm/yy',
-            changeMonth: true,
-            changeYear: true,
-            showAnim: 'slideDown',
-            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-            monthNames: ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
-                         "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],
-            monthNamesShort: ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],
-
-            beforeShow: function(input, inst) {
-                setTimeout(function() {
-                    inst.dpDiv.find('.ui-datepicker-year option').each(function() {
-                        var val = parseInt($(this).val(), 10);
-                        $(this).text(val + 543); // แสดงปี พ.ศ.
-                    });
-                }, 0);
-            },
-
-            onChangeMonthYear: function(year, month, inst) {
-                setTimeout(function() {
-                    inst.dpDiv.find('.ui-datepicker-year option').each(function() {
-                        var val = parseInt($(this).val(), 10);
-                        $(this).text(val + 543);
-                    });
-                }, 0);
-            },
-
-            onClose: function(dateText, inst) {
-                if (dateText) {
-                    // แปลงปี ค.ศ. -> พ.ศ. สำหรับ input
-                    var parts = dateText.split('/');
+                // Convert date format from dd/mm/yy to yyyy-mm-dd
+                if (orderDate) {
+                    var parts = orderDate.split('/');
                     if (parts.length === 3) {
-                        var day = parts[0];
-                        var month = parts[1];
-                        var year = parseInt(parts[2], 10) + 543;
-                        $(this).val(day + '/' + month + '/' + year); // แสดงเป็น พ.ศ.
+                        var year = (parseInt(parts[2], 10) - 543).toString();
+                        orderDateFormatted = year + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
                     }
                 }
-            }
-        });
 
+                var formData = {
+                    OrderDate: orderDateFormatted,
+                    Region: $("#createRegion").val(),
+                    City: $("#createCity").val(),
+                    Category: $("#createCategory").val(),
+                    Product: $("#createProduct").val(),
+                    Quantity: $("#createQuantity").val(),
+                    UnitPrice: parseFloat($("#createUnitPrice").val()),
+                    // TotalPrice is calculated on the server side
+                };
 
-            // เปิด Modal ตอนกด Edit
-            $(".btnEdit").click(function () {
-                var productId = $(this).data("product");
-                var quantity = $(this).data("quantity");
-                var unitPrice = $(this).data("unitprice");
-
-                $("#editProductId").val(productId);
-                $("#editQuantity").val(quantity);
-                $("#editUnitPrice").val(unitPrice);
-
-                $("#editModal").fadeIn();
+                $.ajax({
+                    url: '@Url.Action("Create", "Food")',
+                    type: 'POST',
+                    data: JSON.stringify(formData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function(response){
+                        if (response.success) {
+                            $("#message").text("สร้างข้อมูลสำเร็จ!");
+                            $("#createModal").fadeOut();
+                            $("#createForm")[0].reset();
+                            location.reload(); // Refresh to show new data
+                        } else {
+                            $("#message").text("เกิดข้อผิดพลาด: " + response.message);
+                        }
+                    },
+                    error: function(xhr){
+                        console.log(xhr.responseText);
+                        alert("เกิดข้อผิดพลาดในการสร้างข้อมูล");
+                    }
+                });
+            });
+            // ===================== Datepicker =====================
+            $("#filterDate").datepicker({
+                dateFormat: 'dd/mm/yy',
+                changeMonth: true,
+                changeYear: true,
+                showAnim: 'slideDown',
+                dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+                monthNames: ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+                             "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],
+                monthNamesShort: ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],
+                beforeShow: function(input, inst) {
+                    setTimeout(function() {
+                        inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                            var val = parseInt($(this).val(), 10);
+                            $(this).text(val + 543);
+                        });
+                    }, 0);
+                },
+                onChangeMonthYear: function(year, month, inst) {
+                    setTimeout(function() {
+                        inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                            var val = parseInt($(this).val(), 10);
+                            $(this).text(val + 543);
+                        });
+                    }, 0);
+                },
+                onClose: function(dateText, inst) {
+                    if (dateText) {
+                        var parts = dateText.split('/');
+                        if(parts.length === 3){
+                            var day = parts[0];
+                            var month = parts[1];
+                            var year = parseInt(parts[2], 10) + 543;
+                            $(this).val(day + '/' + month + '/' + year);
+                        }
+                    }
+                }
             });
 
-            // ปิด Modal
+                    $(".btnEdit").click(function () {
+            var food = $(this).data();
+
+            // Set values to the hidden fields from the button's data attributes
+            $("#editOrderDate").val(food.orderdate);
+            $("#editRegion").val(food.region);
+            $("#editProduct").val(food.product);
+
+            // Set values to the editable fields
+            $("#editQuantity").val(food.quantity);
+            $("#editUnitPrice").val(food.unitprice);
+
+            $("#editModal").fadeIn();
+        });
+
+            // ===================== Close Modal =====================
             $("#btnCancelEdit").click(function () {
                 $("#editModal").fadeOut();
             });
+                    $("#btnSaveEdit").click(function () {
+            // Get original data from hidden fields to identify the row
+            var originalOrderDate = $("#editOrderDate").val();
+            var originalRegion = $("#editRegion").val();
+            var originalProduct = $("#editProduct").val();
 
-            // Save ข้อมูลที่แก้ไข
-            $("#btnSaveEdit").click(function () {
-                var productId = $("#editProductId").val();
-                var quantity = $("#editQuantity").val();
-                var unitPrice = $("#editUnitPrice").val();
+            // Convert date format from dd/mm/yy to yyyy-mm-dd
+            var orderDateFormatted = "";
+            if (originalOrderDate) {
+                var parts = originalOrderDate.split('/');
+                if (parts.length === 3) {
+                    var year = (parseInt(parts[2], 10) - 543).toString();
+                    orderDateFormatted = year + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
+                }
+            }
 
-                $.ajax({
-                    url: '@Url.Action("Edit", "Food")',
-                    type: 'POST',
-                    data: { productId: productId, quantity: quantity, unitPrice: unitPrice },
-                    success: function (response) {
+            // Get the updated values from the input fields
+            var updatedQuantity = $("#editQuantity").val();
+            var updatedUnitPrice = $("#editUnitPrice").val();
+
+            // Create a query string
+            var queryString = $.param({
+                orderDate: orderDateFormatted,
+                region: originalRegion,
+                product: originalProduct,
+                quantity: updatedQuantity,
+                unitPrice: updatedUnitPrice
+            });
+
+            $.ajax({
+                url: '@Url.Action("Edit", "Food")?' + queryString,
+                type: 'POST',
+                success: function(response){
+                    if (response.success) {
                         $("#message").text("อัปเดตข้อมูลสำเร็จ!");
                         $("#editModal").fadeOut();
-                        setTimeout(() => window.location.reload(), 1000);
-                    },
-                    error: function () {
-                        alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
+                        // Reload the page to show the updated data
+                        location.reload();
+                    } else {
+                        $("#message").text("เกิดข้อผิดพลาด: " + response.message);
                     }
-                });
+                },
+                error: function(xhr){
+                    console.log(xhr.responseText);
+                    alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
+                }
             });
-
-            // Search
-            $("#btnSearch").click(function () {
-                var product = $("#searchProduct").val();
-                var url = '@Url.Action("Search", "Food")' + '?product=' + encodeURIComponent(product);
-                window.location.href = url;
-            });
-
-                    $("#btnFilter").click(function () {
-            var date = $("#filterDate").val(); // ค่าจะอยู่ในรูป yyyy-mm-dd
-            if (!date) {
-                alert("กรุณาเลือกวันที่");
-                return;
-            }
-            var url = '@Url.Action("Filter", "Food")' + '?date=' + encodeURIComponent(date);
-            window.location.href = url;
         });
-
-            // Refresh
-            $("#btnRefresh").click(function () {
-                window.location.href = '@Url.Action("Index", "Food")';
-            });
-
-            // Delete with confirmation and AJAX
-            $(".btnDelete").click(function (e) {
-                e.preventDefault();
-                if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
-
-                var productId = $(this).data("product");
+            // ===================== Search =====================
+           // ===================== Search =====================
+                         $("#btnSearch").click(function () {
+                var product = $("#searchProduct").val();
+    
+                if (!product) {
+                    alert("กรุณาใส่ชื่อสินค้าที่ต้องการค้นหา");
+                    return;
+                }
 
                 $.ajax({
-                    url: '@Url.Action("Delete", "Food")',
-                    type: 'POST',
-                    data: { productId: productId },
-                    success: function (response) {
-                        alert("ลบข้อมูลสำเร็จ");
-                        window.location.reload();
+                    url: '@Url.Action("Search", "Food")',
+                    type: 'GET',
+                    data: { product: product },
+                    success: function(response){
+                        var tableBody = $("#foodTable tbody");
+                        tableBody.empty(); // Clear existing table rows
+
+                        if (response && response.length > 0) {
+                            // Loop through each item in the JSON response
+                            $.each(response, function(index, food) {
+                                var newRow = `<tr>
+                                    <td>${food.orderDate.substring(0, 10)}</td>
+                                    <td>${food.region}</td>
+                                    <td>${food.city}</td>
+                                    <td>${food.category}</td>
+                                    <td>${food.product}</td>
+                                    <td>${food.quantity}</td>
+                                    <td>${food.unitPrice}</td>
+                                    <td>${food.totalPrice}</td>
+                                    <td>
+                                        <button class="btnEdit" 
+                                            data-orderdate="${food.orderDate.substring(0, 10)}"
+                                            data-region="${food.region}"
+                                            data-product="${food.product}"
+                                            data-quantity="${food.quantity}"
+                                            data-unitprice="${food.unitPrice}">
+                                            Edit
+                                        </button>
+                                        <button class="btnDelete" 
+                                            data-product="${food.product}"
+                                            data-orderdate="${food.orderDate.substring(0, 10)}"
+                                            data-region="${food.region}">
+                                            Delete
+                                        </button>
+                                    </td>
+                                </tr>`;
+                                tableBody.append(newRow);
+                            });
+                            $("#message").text(`แสดงผลการค้นหาสำหรับ: ${product}`);
+                        } else {
+                            $("#message").text(`ไม่พบผลลัพธ์สำหรับ: ${product}`);
+                        }
+
+                        // Re-bind click handlers for the new buttons
+                        // You need to re-attach the event handlers because the buttons are newly created.
+                        bindButtonEvents();
                     },
-                    error: function () {
-                        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+                    error: function(xhr){
+                        console.log(xhr.responseText);
+                        alert("เกิดข้อผิดพลาดในการค้นหา");
                     }
                 });
             });
+
+                // Create a function to bind event handlers
+                function bindButtonEvents() {
+                    // Re-bind the click events for Edit and Delete buttons
+                    $(".btnEdit").off("click").on("click", function() {
+                        // Your existing Edit button logic here
+                    });
+
+                    $(".btnDelete").off("click").on("click", function() {
+                        // Your existing Delete button logic here
+                    });
+                }
+
+            // ===================== Filter =====================
+            $("#btnFilter").click(function () {
+                var date = $("#filterDate").val();
+                if(!date){ alert("กรุณาเลือกวันที่"); return; }
+
+                var parts = date.split('/');
+                if(parts.length === 3){
+                    var day = parts[0].padStart(2,'0');
+                    var month = parts[1].padStart(2,'0');
+                    var year = (parseInt(parts[2],10)-543).toString();
+                    date = year + '-' + month + '-' + day;
+                }
+
+                $.ajax({
+                    url: '@Url.Action("Filter", "Food")',
+                    type: 'GET',
+                    data: { date: date },
+                    success: function(response){
+                        $("#tableContainer").html(response);
+                    },
+                    error: function(){
+                        alert("เกิดข้อผิดพลาดในการกรองข้อมูล");
+                    }
+                });
+            });
+
+            // ===================== Refresh =====================
+            $("#btnRefresh").click(function () {
+                $.ajax({
+                    url: '@Url.Action("Index", "Food")',
+                    type: 'GET',
+                    success: function(response){
+                        $("#tableContainer").html(response);
+                    },
+                    error: function(){
+                        alert("เกิดข้อผิดพลาดในการรีเฟรช");
+                    }
+                });
+            });
+
+                   $(".btnDelete").click(function (e) {
+            e.preventDefault();
+            if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
+
+            // รับข้อมูลจาก data- attributes ทั้งหมด
+            var rowData = {
+                orderDate: $(this).data("orderdate"),
+                region: $(this).data("region"),
+                product: $(this).data("product")
+            };
+
+            $.ajax({
+                url: '@Url.Action("Delete", "Food")',
+                type: 'POST',
+                // ส่ง object ที่มีข้อมูลที่ครบถ้วน
+                data: rowData,
+                success: function(response){
+                    if (response.success) {
+                        $("#message").text("ลบข้อมูลสำเร็จ!");
+                        // หาลบ row ที่ถูกต้องบนหน้าเว็บ
+                        $(e.target).closest("tr").remove();
+                    } else {
+                        alert("เกิดข้อผิดพลาด: " + response.message);
+                    }
+                },
+                error: function(xhr){
+                    console.log(xhr.responseText);
+                    alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+                }
+            });
+        });
+
         });
     </script>
+
+
 }
