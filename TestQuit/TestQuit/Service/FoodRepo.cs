@@ -40,24 +40,27 @@ namespace TestQuit.Service
 
         public List<Food> Sort(string product)
         {
-            return GetFoodFromExcel()
+            var cs = GetFoodFromExcel()
                 .OrderByDescending(x => x.Product)
                 .ToList();
+            return cs;
         }
 
         public List<Food> Search(string product)
         {
-            return GetFoodFromExcel()
+            var cs = GetFoodFromExcel()
                 .Where(x => x.Product == product)
                 .ToList();
+            return cs;
         }
 
         public List<Food> fillter(string date)
         {
             var targetDate = DateTime.Parse(date);
-            return GetFoodFromExcel()
+            var cs = GetFoodFromExcel()
                 .Where(x => x.OrderDate.Date == targetDate.Date)
                 .ToList();
+            return cs;
         }
 
         // ------------------- CORE EXCEL METHODS ------------------------

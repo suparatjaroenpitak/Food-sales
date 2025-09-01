@@ -4,21 +4,197 @@
     ViewBag.Title = "Food List";
 }
 
+<style>
+    body {
+        background-color: #121212;
+        color: #fff;
+        font-family: 'Helvetica Neue', Arial, sans-serif;
+    }
+
+    h2 {
+        color: #1DB954;
+        margin-bottom: 20px;
+    }
+
+    /* Search & Filter Section */
+    .toolbar {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-bottom: 20px;
+        align-items: center;
+    }
+
+        .toolbar label {
+            font-weight: bold;
+            margin-right: 5px;
+        }
+
+        .toolbar input, .toolbar button {
+            padding: 8px 12px;
+            border: none;
+            border-radius: 20px;
+            outline: none;
+        }
+
+        .toolbar input {
+            background-color: #282828;
+            color: #fff;
+        }
+
+        .toolbar button {
+            background-color: #1DB954;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+            .toolbar button:hover {
+                background-color: #1ed760;
+            }
+
+    /* Table */
+    #foodTable {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #181818;
+        border-radius: 10px;
+        overflow: hidden;
+    }
+
+        #foodTable th, #foodTable td {
+            padding: 12px;
+            text-align: left;
+        }
+
+        #foodTable thead {
+            background-color: #282828;
+        }
+
+        #foodTable th {
+            color: #1DB954;
+        }
+
+        #foodTable tr:nth-child(even) {
+            background-color: #202020;
+        }
+
+        #foodTable tr:hover {
+            background-color: #333333;
+        }
+
+    /* Buttons in Table */
+    .btnEdit, .btnDelete {
+        padding: 6px 12px;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        font-size: 0.9em;
+    }
+
+    .btnEdit {
+        background-color: #1DB954;
+        color: #fff;
+    }
+
+        .btnEdit:hover {
+            background-color: #1ed760;
+        }
+
+    .btnDelete {
+        background-color: #E91429;
+        color: #fff;
+    }
+
+        .btnDelete:hover {
+            background-color: #ff4655;
+        }
+
+    /* Modal */
+    #editModal {
+        display: none;
+        position: fixed;
+        top: 20%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 400px;
+        background: #181818;
+        border-radius: 12px;
+        padding: 20px;
+        z-index: 1000;
+        box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+    }
+
+        #editModal h3 {
+            color: #1DB954;
+            margin-bottom: 15px;
+        }
+
+        #editModal label {
+            display: block;
+            margin-top: 10px;
+            margin-bottom: 5px;
+            font-size: 0.9em;
+        }
+
+        #editModal input {
+            width: 100%;
+            padding: 8px;
+            border-radius: 8px;
+            border: none;
+            background-color: #282828;
+            color: #fff;
+            margin-bottom: 10px;
+        }
+
+        #editModal button {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 20px;
+            margin-top: 10px;
+            cursor: pointer;
+        }
+
+    #btnSaveEdit {
+        background-color: #1DB954;
+        color: #fff;
+    }
+
+    #btnCancelEdit {
+        background-color: #333;
+        color: #fff;
+    }
+
+    #btnSaveEdit:hover {
+        background-color: #1ed760;
+    }
+
+    #btnCancelEdit:hover {
+        background-color: #444;
+    }
+
+    #message {
+        margin-top: 15px;
+        font-weight: bold;
+        color: #1DB954;
+    }
+</style>
+
 <h2>Food List</h2>
 
-<div>
-    <label>ค้นหา Product: </label>
-    <input type="text" id="searchProduct" />
+<div class="toolbar">
+    <label>ค้นหา Product:</label>
+    <input type="text" id="searchProduct" placeholder="Type product name..." />
     <button id="btnSearch">Search</button>
 
-    <label>กรองวันที่ (yyyy-MM-dd): </label>
+    <label>กรองวันที่:</label>
     <input type="date" id="filterDate" />
     <button id="btnFilter">Filter</button>
 
     <button id="btnRefresh">Refresh</button>
 </div>
 
-<table id="foodTable" border="1" cellpadding="5" cellspacing="0" style="margin-top:10px; width:100%;">
+<table id="foodTable">
     <thead>
         <tr>
             <th>OrderDate</th>
@@ -45,21 +221,77 @@
                 <td>@food.UnitPrice</td>
                 <td>@food.TotalPrice</td>
                 <td>
-                    <a href="@Url.Action("Edit", "Food", new { productId = food.Product })">Edit</a> |
-                    <a href="#" class="btnDelete" data-product="@food.Product">Delete</a>
+                    <button class="btnEdit"
+                            data-product="@food.Product"
+                            data-quantity="@food.Quantity"
+                            data-unitprice="@food.UnitPrice">
+                        Edit
+                    </button>
+                    <button class="btnDelete" data-product="@food.Product">Delete</button>
                 </td>
             </tr>
         }
     </tbody>
 </table>
 
-<div id="message" style="margin-top:10px; color:green;"></div>
+<div id="editModal">
+    <h3>แก้ไขข้อมูล</h3>
+    <input type="hidden" id="editProductId" />
+
+    <label>Quantity:</label>
+    <input type="text" id="editQuantity" />
+
+    <label>UnitPrice:</label>
+    <input type="text" id="editUnitPrice" />
+
+    <button id="btnSaveEdit">Save</button>
+    <button id="btnCancelEdit">Cancel</button>
+</div>
+
+<div id="message"></div>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script>
         $(function () {
+            // เปิด Modal ตอนกด Edit
+            $(".btnEdit").click(function () {
+                var productId = $(this).data("product");
+                var quantity = $(this).data("quantity");
+                var unitPrice = $(this).data("unitprice");
 
+                $("#editProductId").val(productId);
+                $("#editQuantity").val(quantity);
+                $("#editUnitPrice").val(unitPrice);
+
+                $("#editModal").fadeIn();
+            });
+
+            // ปิด Modal
+            $("#btnCancelEdit").click(function () {
+                $("#editModal").fadeOut();
+            });
+
+            // Save ข้อมูลที่แก้ไข
+            $("#btnSaveEdit").click(function () {
+                var productId = $("#editProductId").val();
+                var quantity = $("#editQuantity").val();
+                var unitPrice = $("#editUnitPrice").val();
+
+                $.ajax({
+                    url: '@Url.Action("Edit", "Food")',
+                    type: 'POST',
+                    data: { productId: productId, quantity: quantity, unitPrice: unitPrice },
+                    success: function (response) {
+                        $("#message").text("อัปเดตข้อมูลสำเร็จ!");
+                        $("#editModal").fadeOut();
+                        setTimeout(() => window.location.reload(), 1000);
+                    },
+                    error: function () {
+                        alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
+                    }
+                });
+            });
 
             // Search
             $("#btnSearch").click(function () {
@@ -92,7 +324,6 @@
                     type: 'POST',
                     data: { productId: productId },
                     success: function (response) {
-                        // รีโหลดหน้าใหม่หลังลบ
                         alert("ลบข้อมูลสำเร็จ");
                         window.location.reload();
                     },
