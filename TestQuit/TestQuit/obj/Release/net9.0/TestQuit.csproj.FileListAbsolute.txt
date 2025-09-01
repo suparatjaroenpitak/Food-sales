@@ -1,1 +1,1 @@
-D:\TestQuit\TestQuit\obj\Release\net9.0\TestQuit.csproj.AssemblyReference.cache
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestQuit\obj\Release\net9.0\TestQuit.csproj.AssemblyReference.cache

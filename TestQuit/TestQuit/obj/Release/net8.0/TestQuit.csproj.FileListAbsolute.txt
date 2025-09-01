@@ -1,1 +1,0 @@
-D:\TestQuit\TestQuit\obj\Release\net8.0\TestQuit.csproj.AssemblyReference.cache

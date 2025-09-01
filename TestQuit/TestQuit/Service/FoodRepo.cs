@@ -7,6 +7,12 @@ namespace TestQuit.Service
     public class FoodRepo : IFood
     {
         private readonly IWebHostEnvironment _env;
+
+        public FoodRepo(IWebHostEnvironment env)
+        {
+            _env = env;
+        }
+
         private string FilePath => Path.Combine(_env.WebRootPath, "Data", "Food sales.xlsx");
         private const string SheetName = "Foods";
 

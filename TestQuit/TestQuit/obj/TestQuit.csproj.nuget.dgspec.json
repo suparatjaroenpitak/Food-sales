@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\TestQuit\\TestQuit\\TestQuit.csproj": {}
+    "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj": {}
   },
   "projects": {
-    "D:\\TestQuit\\TestQuit\\TestQuit.csproj": {
+    "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\TestQuit\\TestQuit\\TestQuit.csproj",
+        "projectUniqueName": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj",
         "projectName": "TestQuit",
-        "projectPath": "D:\\TestQuit\\TestQuit\\TestQuit.csproj",
+        "projectPath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj",
         "packagesPath": "C:\\Users\\ssss\\.nuget\\packages\\",
-        "outputPath": "D:\\TestQuit\\TestQuit\\obj\\",
+        "outputPath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
