@@ -1,443 +1,419 @@
 ﻿@model List<TestQuit.Models.Food>
-
 @{
     ViewBag.Title = "Food List";
 }
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <style>
-
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgb(0,0,0);
+        background-color: rgba(0,0,0,0.4);
+    }
+    .modal-content {
+        background-color: #fefefe;
+        margin: 15% auto;
+        padding: 20px;
+        border: 1px solid #888;
+        width: 80%;
+    }
+    .close {
+        color: #aaa;
+        float: right;
+        font-size: 28px;
+        font-weight: bold;
+    }
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
 </style>
 
 <h2>Food List</h2>
-
-<div class="toolbar">
-    <label>ค้นหา Product:</label>
-    <input type="text" id="searchProduct" placeholder="Type product name..." />
-    <button id="btnSearch">Search</button>
-
-    <label>กรองวันที่:</label>
-    <input type="text" id="filterDate" />
-    <input type="hidden" id="hiddenDate" name="filterDate" />
-
-    <button id="btnFilter">Filter</button>
-
-
-    <button id="btnRefresh">Refresh</button>
+<div id="tableContainer">
     <div class="toolbar">
-    <button id="btnCreate">Create New</button>
-</div>
-</div>
-
-<div id="message"></div>
-<table id="foodTable">
-    <thead>
-        <tr>
-            <th>OrderDate</th>
-            <th>Region</th>
-            <th>City</th>
-            <th>Category</th>
-            <th>Product</th>
-            <th>Quantity</th>
-            <th>UnitPrice</th>
-            <th>TotalPrice</th>
-            <th>Actions</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var food in Model)
-        {
+        <label>ค้นหา Product:</label>
+        <input type="text" id="searchProduct" placeholder="Type product name..." />
+        <button id="btnSearch">Search</button>
+        <label>กรองวันที่:</label>
+        <input type="text" id="filterDate" />
+        <input type="hidden" id="hiddenDate" name="filterDate" />
+        <button id="btnFilter">Filter</button>
+        <button id="btnRefresh">Refresh</button>
+        <button id="btnCreate">Create New</button>
+    </div>
+    <div id="message"></div>
+    <table id="foodTable">
+        <thead>
             <tr>
-                <td>@food.OrderDate.ToString("yyyy-MM-dd")</td>
-                <td>@food.Region</td>
-                <td>@food.City</td>
-                <td>@food.Category</td>
-                <td>@food.Product</td>
-                <td>@food.Quantity</td>
-                <td>@food.UnitPrice</td>
-                <td>@food.TotalPrice</td>
-                <td>
-                    <button class="btnEdit"
-                            data-orderdate="@food.OrderDate.ToString("yyyy-MM-dd")"
-                            data-region="@food.Region"
-                            data-city="@food.City"
-                            data-category="@food.Category"
-                            data-product="@food.Product"
-                            data-quantity="@food.Quantity"
-                            data-unitprice="@food.UnitPrice"
-                            data-totalprice="@food.TotalPrice">
-                        Edit
-                    </button>
-                    <button class="btnDelete"
-                            data-orderdate="@food.OrderDate.ToString("yyyy-MM-dd")"
-                            data-region="@food.Region"
-                            data-product="@food.Product">
-                        Delete
-                    </button>
-                </td>
+                <th data-sort-by="OrderDate">OrderDate</th>
+                <th data-sort-by="Region">Region</th>
+                <th data-sort-by="City">City</th>
+                <th data-sort-by="Category">Category</th>
+                <th data-sort-by="Product">Product</th>
+                <th data-sort-by="Quantity">Quantity</th>
+                <th data-sort-by="UnitPrice">UnitPrice</th>
+                <th data-sort-by="TotalPrice">TotalPrice</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
-</table>
-
-<div id="editModal" style="display: none;">
-    <h3>แก้ไขข้อมูล</h3>
-
-    <input type="hidden" id="editOrderDate" />
-    <input type="hidden" id="editRegion" />
-    <input type="hidden" id="editProduct" />
-
-    <label>Quantity:</label>
-    <input type="text" id="editQuantity" />
-
-    <label>UnitPrice:</label>
-    <input type="text" id="editUnitPrice" />
-
-    <button id="btnSaveEdit">Save</button>
-    <button id="btnCancelEdit">Cancel</button>
+        </thead>
+        <tbody>
+            @foreach (var food in Model)
+            {
+                <tr>
+                    <td>@food.OrderDate</td>
+                    <td>@food.Region</td>
+                    <td>@food.City</td>
+                    <td>@food.Category</td>
+                    <td>@food.Product</td>
+                    <td>@food.Quantity</td>
+                    <td>@food.UnitPrice</td>
+                    <td>@food.TotalPrice</td>
+                    <td>
+                        <button class="btnEdit" data-orderdate="@food.OrderDate"
+                                data-region="@food.Region"
+                                data-city="@food.City"
+                                data-category="@food.Category"
+                                data-product="@food.Product"
+                                data-quantity="@food.Quantity"
+                                data-unitprice="@food.UnitPrice"
+                                data-totalprice="@food.TotalPrice">
+                            Edit
+                        </button>
+                        <button class="btnDelete" data-orderdate="@food.OrderDate"
+                                data-region="@food.Region"
+                                data-product="@food.Product">
+                            Delete
+                        </button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 </div>
-<div id="createModal" style="display: none;">
-    <h3>สร้างข้อมูลใหม่</h3>
-    <form id="createForm">
-        <label>OrderDate:</label>
-        <input type="text" id="createOrderDate" />
-        <label>Region:</label>
-        <input type="text" id="createRegion" />
-        <label>City:</label>
-        <input type="text" id="createCity" />
-        <label>Category:</label>
-        <input type="text" id="createCategory" />
-        <label>Product:</label>
-        <input type="text" id="createProduct" />
-        <label>Quantity:</label>
-        <input type="text" id="createQuantity" />
-        <label>UnitPrice:</label>
-        <input type="text" id="createUnitPrice" />
 
-        <button type="button" id="btnSaveCreate">Save</button>
-        <button type="button" id="btnCancelCreate">Cancel</button>
-    </form>
+<div id="editModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeEditModal">&times;</span>
+        <h3>แก้ไขข้อมูล</h3>
+        <input type="hidden" id="editOrderDate" />
+        <input type="hidden" id="editRegion" />
+        <input type="hidden" id="editProduct" />
+        <label>Quantity:</label>
+        <input type="text" id="editQuantity" />
+        <label>UnitPrice:</label>
+        <input type="text" id="editUnitPrice" />
+        <button id="btnSaveEdit">Save</button>
+        <button id="btnCancelEdit">Cancel</button>
+    </div>
+</div>
+
+<div id="createModal" class="modal">
+    <div class="modal-content">
+        <span class="close" id="closeCreateModal">&times;</span>
+        <h3>สร้างข้อมูลใหม่</h3>
+        <form id="createForm">
+            <label>OrderDate:</label>
+            <input type="text" id="createOrderDate" />
+            <label>Region:</label>
+            <input type="text" id="createRegion" />
+            <label>City:</label>
+            <input type="text" id="createCity" />
+            <label>Category:</label>
+            <input type="text" id="createCategory" />
+            <label>Product:</label>
+            <input type="text" id="createProduct" />
+            <label>Quantity:</label>
+            <input type="text" id="createQuantity" />
+            <label>UnitPrice:</label>
+            <input type="text" id="createUnitPrice" />
+            <button type="button" id="btnSaveCreate">Save</button>
+            <button type="button" id="btnCancelCreate">Cancel</button>
+        </form>
+    </div>
 </div>
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-datepicker/1.13.2/i18n/datepicker-th.min.js"></script>
     <script>
         $(function () {
-        
-            $("#btnCreate").click(function () {
-                alert("6666666")
-     $("#createModal").fadeIn();
-});
+            // Function to update the table body with new data
+          function updateTable(response) {
+    var tableBody = $("#foodTable tbody");
+    tableBody.empty(); 
+    if (response && response.length > 0) {
+        $.each(response, function (index, food) {
 
-            $("#btnCancelCreate").click(function () {
-            $("#createModal").fadeOut();
-            $("#createForm")[0].reset(); // Clear the form fields
+            var orderDate = food.OrderDate ? food.OrderDate.substring(0, 10) : '';
+            var newRow = `<tr>
+                <td>${orderDate}</td>
+                <td>${food.Region}</td>
+                <td>${food.City}</td>
+                <td>${food.Category}</td>
+                <td>${food.Product}</td>
+                <td>${food.Quantity}</td>
+                <td>${food.UnitPrice}</td>
+                <td>${food.TotalPrice}</td>
+                <td>
+                    <button class="btnEdit" data-orderdate="${orderDate}"
+                            data-region="${food.Region}"
+                            data-city="${food.City}"
+                            data-category="${food.Category}"
+                            data-product="${food.Product}"
+                            data-quantity="${food.Quantity}"
+                            data-unitprice="${food.UnitPrice}"
+                            data-totalprice="${food.TotalPrice}">
+                        Edit
+                    </button>
+                    <button class="btnDelete" data-orderdate="${orderDate}"
+                            data-region="${food.Region}"
+                            data-product="${food.Product}">
+                        Delete
+                    </button>
+                </td>
+            </tr>`;
+            tableBody.append(newRow);
         });
-            $("#btnSaveCreate").click(function () {
-                var orderDate = $("#createOrderDate").val();
-                var orderDateFormatted = "";
+    } else {
+        tableBody.append("<tr><td colspan='9'>ไม่พบข้อมูล</td></tr>");
+    }
+}
 
-                // Convert date format from dd/mm/yy to yyyy-mm-dd
-                if (orderDate) {
-                    var parts = orderDate.split('/');
-                    if (parts.length === 3) {
-                        var year = (parseInt(parts[2], 10) - 543).toString();
-                        orderDateFormatted = year + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
-                    }
-                }
+            // Event Delegation for dynamically created elements
+            $("#foodTable").on("click", ".btnEdit", function () {
+                var food = $(this).data();
+                $("#editOrderDate").val(food.orderdate);
+                $("#editRegion").val(food.region);
+                $("#editProduct").val(food.product);
+                $("#editQuantity").val(food.quantity);
+                $("#editUnitPrice").val(food.unitprice);
+                $("#editModal").fadeIn();
+            });
 
-                var formData = {
-                    OrderDate: orderDateFormatted,
-                    Region: $("#createRegion").val(),
-                    City: $("#createCity").val(),
-                    Category: $("#createCategory").val(),
-                    Product: $("#createProduct").val(),
-                    Quantity: $("#createQuantity").val(),
-                    UnitPrice: parseFloat($("#createUnitPrice").val()),
-                    // TotalPrice is calculated on the server side
+            $("#foodTable").on("click", ".btnDelete", function (e) {
+                e.preventDefault();
+                if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
+                var rowData = {
+                    orderDate: $(this).data("orderdate"),
+                    region: $(this).data("region"),
+                    product: $(this).data("product")
                 };
-
                 $.ajax({
-                    url: '@Url.Action("Create", "Food")',
+                    url: '@Url.Action("Delete", "Food")',
                     type: 'POST',
-                    data: JSON.stringify(formData),
-                    contentType: "application/json; charset=utf-8",
-                    dataType: "json",
-                    success: function(response){
+                    data: rowData,
+                    success: function (response) {
                         if (response.success) {
-                            $("#message").text("สร้างข้อมูลสำเร็จ!");
-                            $("#createModal").fadeOut();
-                            $("#createForm")[0].reset();
-                            location.reload(); // Refresh to show new data
+                            $("#message").text("ลบข้อมูลสำเร็จ!").fadeIn().delay(3000).fadeOut();
+                            $(e.target).closest("tr").remove();
                         } else {
-                            $("#message").text("เกิดข้อผิดพลาด: " + response.message);
+                            $("#message").text("เกิดข้อผิดพลาด: " + response.message).fadeIn().delay(5000).fadeOut();
                         }
                     },
-                    error: function(xhr){
+                    error: function (xhr) {
                         console.log(xhr.responseText);
-                        alert("เกิดข้อผิดพลาดในการสร้างข้อมูล");
+                        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
                     }
                 });
             });
-            // ===================== Datepicker =====================
-            $("#filterDate").datepicker({
+
+            // Sort functionality
+            $("#foodTable thead th[data-sort-by]").on("click", function () {
+                var sortBy = $(this).data("sortBy");
+                var sortDir = $(this).hasClass("asc") ? "desc" : "asc";
+                $("#foodTable thead th").removeClass("asc desc");
+                $(this).addClass(sortDir);
+
+                $.ajax({
+                    url: '@Url.Action("Sort", "Food")',
+                    type: 'GET',
+                    data: { sortBy: sortBy, sortDir: sortDir },
+                    success: function (response) {
+                        updateTable(response);
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        alert("เกิดข้อผิดพลาดในการเรียงลำดับข้อมูล");
+                    }
+                });
+            });
+
+            // Datepicker initialization
+            $("#filterDate, #createOrderDate").datepicker({
                 dateFormat: 'dd/mm/yy',
                 changeMonth: true,
                 changeYear: true,
                 showAnim: 'slideDown',
                 dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-                monthNames: ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
-                             "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],
-                monthNamesShort: ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],
-                beforeShow: function(input, inst) {
-                    setTimeout(function() {
-                        inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                monthNames: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+                monthNamesShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
+                beforeShow: function (input, inst) {
+                    setTimeout(function () {
+                        inst.dpDiv.find('.ui-datepicker-year option').each(function () {
                             var val = parseInt($(this).val(), 10);
                             $(this).text(val + 543);
                         });
                     }, 0);
                 },
-                onChangeMonthYear: function(year, month, inst) {
-                    setTimeout(function() {
-                        inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                onChangeMonthYear: function (year, month, inst) {
+                    setTimeout(function () {
+                        inst.dpDiv.find('.ui-datepicker-year option').each(function () {
                             var val = parseInt($(this).val(), 10);
                             $(this).text(val + 543);
                         });
                     }, 0);
-                },
-                onClose: function(dateText, inst) {
-                    if (dateText) {
-                        var parts = dateText.split('/');
-                        if(parts.length === 3){
-                            var day = parts[0];
-                            var month = parts[1];
-                            var year = parseInt(parts[2], 10) + 543;
-                            $(this).val(day + '/' + month + '/' + year);
-                        }
-                    }
                 }
             });
 
-                    $(".btnEdit").click(function () {
-            var food = $(this).data();
-
-            // Set values to the hidden fields from the button's data attributes
-            $("#editOrderDate").val(food.orderdate);
-            $("#editRegion").val(food.region);
-            $("#editProduct").val(food.product);
-
-            // Set values to the editable fields
-            $("#editQuantity").val(food.quantity);
-            $("#editUnitPrice").val(food.unitprice);
-
-            $("#editModal").fadeIn();
-        });
-
-            // ===================== Close Modal =====================
-            $("#btnCancelEdit").click(function () {
-                $("#editModal").fadeOut();
+            // Create Modal events
+            $("#btnCreate").click(function () {
+                $("#createModal").fadeIn();
             });
-                    $("#btnSaveEdit").click(function () {
-            // Get original data from hidden fields to identify the row
-            var originalOrderDate = $("#editOrderDate").val();
-            var originalRegion = $("#editRegion").val();
-            var originalProduct = $("#editProduct").val();
 
-            // Convert date format from dd/mm/yy to yyyy-mm-dd
-            var orderDateFormatted = "";
-            if (originalOrderDate) {
-                var parts = originalOrderDate.split('/');
+            $("#closeCreateModal, #btnCancelCreate").click(function () {
+                $("#createModal").fadeOut();
+                $("#createForm")[0].reset();
+            });
+
+            $("#btnSaveCreate").click(function () {
+                var orderDate = $("#createOrderDate").val();
+                var parts = orderDate.split('/');
+                var orderDateFormatted = "";
                 if (parts.length === 3) {
                     var year = (parseInt(parts[2], 10) - 543).toString();
                     orderDateFormatted = year + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
                 }
-            }
 
-            // Get the updated values from the input fields
-            var updatedQuantity = $("#editQuantity").val();
-            var updatedUnitPrice = $("#editUnitPrice").val();
+                var quantityValue = parseInt($("#createQuantity").val());
+                var unitPriceValue = parseFloat($("#createUnitPrice").val());
 
-            // Create a query string
-            var queryString = $.param({
-                orderDate: orderDateFormatted,
-                region: originalRegion,
-                product: originalProduct,
-                quantity: updatedQuantity,
-                unitPrice: updatedUnitPrice
-            });
-
-            $.ajax({
-                url: '@Url.Action("Edit", "Food")?' + queryString,
-                type: 'POST',
-                success: function(response){
-                    if (response.success) {
-                        $("#message").text("อัปเดตข้อมูลสำเร็จ!");
-                        $("#editModal").fadeOut();
-                        // Reload the page to show the updated data
-                        location.reload();
-                    } else {
-                        $("#message").text("เกิดข้อผิดพลาด: " + response.message);
+                var foodData = {
+                    OrderDate: orderDateFormatted,
+                    Region: $("#createRegion").val(),
+                    City: $("#createCity").val(),
+                    Category: $("#createCategory").val(),
+                    Product: $("#createProduct").val(),
+                    Quantity: quantityValue,
+                    UnitPrice: unitPriceValue,
+                    TotalPrice: quantityValue * unitPriceValue
+                };
+                
+                $.ajax({
+                    url: '@Url.Action("Create", "Food")',
+                    type: 'POST',
+                    data: JSON.stringify(foodData),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: function (response) {
+                        if (response.success) {
+                            $("#message").text("สร้างข้อมูลสำเร็จ!").fadeIn().delay(3000).fadeOut();
+                            $("#createModal").fadeOut();
+                            $("#createForm")[0].reset();
+                            location.reload();
+                        } else {
+                            $("#message").text("เกิดข้อผิดพลาด: " + response.message).fadeIn().delay(5000).fadeOut();
+                        }
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        console.log("เกิดข้อผิดพลาดในการสร้างข้อมูล");
                     }
-                },
-                error: function(xhr){
-                    console.log(xhr.responseText);
-                    alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
-                }
+                });
             });
-        });
-            // ===================== Search =====================
-           // ===================== Search =====================
-                         $("#btnSearch").click(function () {
+
+            // Edit Modal events
+            $("#closeEditModal, #btnCancelEdit").click(function () {
+                $("#editModal").fadeOut();
+            });
+
+            $("#btnSaveEdit").click(function () {
+                var formData = {
+                    OrderDate: $("#editOrderDate").val(),
+                    Region: $("#editRegion").val(),
+                    Product: $("#editProduct").val(),
+                    Quantity: $("#editQuantity").val(),
+                    UnitPrice: $("#editUnitPrice").val()
+                };
+
+                $.ajax({
+                    url: '@Url.Action("Edit", "Food")',
+                    type: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        if (response.success) {
+                            $("#message").text("อัปเดตข้อมูลสำเร็จ!").fadeIn().delay(3000).fadeOut();
+                            $("#editModal").fadeOut();
+                            location.reload();
+                        } else {
+                            $("#message").text("เกิดข้อผิดพลาด: " + response.message).fadeIn().delay(5000).fadeOut();
+                        }
+                    },
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
+                        alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
+                    }
+                });
+            });
+
+            // Search functionality
+            $("#btnSearch").click(function () {
                 var product = $("#searchProduct").val();
-    
                 if (!product) {
                     alert("กรุณาใส่ชื่อสินค้าที่ต้องการค้นหา");
                     return;
                 }
-
                 $.ajax({
                     url: '@Url.Action("Search", "Food")',
                     type: 'GET',
                     data: { product: product },
-                    success: function(response){
-                        var tableBody = $("#foodTable tbody");
-                        tableBody.empty(); // Clear existing table rows
-
-                        if (response && response.length > 0) {
-                            // Loop through each item in the JSON response
-                            $.each(response, function(index, food) {
-                                var newRow = `<tr>
-                                    <td>${food.orderDate.substring(0, 10)}</td>
-                                    <td>${food.region}</td>
-                                    <td>${food.city}</td>
-                                    <td>${food.category}</td>
-                                    <td>${food.product}</td>
-                                    <td>${food.quantity}</td>
-                                    <td>${food.unitPrice}</td>
-                                    <td>${food.totalPrice}</td>
-                                    <td>
-                                        <button class="btnEdit" 
-                                            data-orderdate="${food.orderDate.substring(0, 10)}"
-                                            data-region="${food.region}"
-                                            data-product="${food.product}"
-                                            data-quantity="${food.quantity}"
-                                            data-unitprice="${food.unitPrice}">
-                                            Edit
-                                        </button>
-                                        <button class="btnDelete" 
-                                            data-product="${food.product}"
-                                            data-orderdate="${food.orderDate.substring(0, 10)}"
-                                            data-region="${food.region}">
-                                            Delete
-                                        </button>
-                                    </td>
-                                </tr>`;
-                                tableBody.append(newRow);
-                            });
-                            $("#message").text(`แสดงผลการค้นหาสำหรับ: ${product}`);
-                        } else {
-                            $("#message").text(`ไม่พบผลลัพธ์สำหรับ: ${product}`);
-                        }
-
-                        // Re-bind click handlers for the new buttons
-                        // You need to re-attach the event handlers because the buttons are newly created.
-                        bindButtonEvents();
+                    success: function (response) {
+                        updateTable(response);
+                        $("#message").text(`แสดงผลการค้นหาสำหรับ: ${product}`).fadeIn().delay(3000).fadeOut();
                     },
-                    error: function(xhr){
+                    error: function (xhr) {
                         console.log(xhr.responseText);
                         alert("เกิดข้อผิดพลาดในการค้นหา");
                     }
                 });
             });
 
-                // Create a function to bind event handlers
-                function bindButtonEvents() {
-                    // Re-bind the click events for Edit and Delete buttons
-                    $(".btnEdit").off("click").on("click", function() {
-                        // Your existing Edit button logic here
-                    });
-
-                    $(".btnDelete").off("click").on("click", function() {
-                        // Your existing Delete button logic here
-                    });
-                }
-
-            // ===================== Filter =====================
+            // Filter functionality
             $("#btnFilter").click(function () {
                 var date = $("#filterDate").val();
-                if(!date){ alert("กรุณาเลือกวันที่"); return; }
-
+                if (!date) { alert("กรุณาเลือกวันที่"); return; }
                 var parts = date.split('/');
-                if(parts.length === 3){
-                    var day = parts[0].padStart(2,'0');
-                    var month = parts[1].padStart(2,'0');
-                    var year = (parseInt(parts[2],10)-543).toString();
-                    date = year + '-' + month + '-' + day;
-                }
+                var formattedDate = (parseInt(parts[2], 10) - 543) + '-' + parts[1].padStart(2, '0') + '-' + parts[0].padStart(2, '0');
 
                 $.ajax({
                     url: '@Url.Action("Filter", "Food")',
                     type: 'GET',
-                    data: { date: date },
-                    success: function(response){
-                        $("#tableContainer").html(response);
+                    data: { date: formattedDate },
+                    success: function (response) {
+                        updateTable(response);
+                        $("#message").text(`แสดงผลการกรองสำหรับวันที่: ${date}`).fadeIn().delay(3000).fadeOut();
                     },
-                    error: function(){
+                    error: function (xhr) {
+                        console.log(xhr.responseText);
                         alert("เกิดข้อผิดพลาดในการกรองข้อมูล");
                     }
                 });
             });
 
-            // ===================== Refresh =====================
+            // Refresh page
             $("#btnRefresh").click(function () {
-                $.ajax({
-                    url: '@Url.Action("Index", "Food")',
-                    type: 'GET',
-                    success: function(response){
-                        $("#tableContainer").html(response);
-                    },
-                    error: function(){
-                        alert("เกิดข้อผิดพลาดในการรีเฟรช");
-                    }
-                });
+                location.reload();
             });
-
-                   $(".btnDelete").click(function (e) {
-            e.preventDefault();
-            if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
-
-            // รับข้อมูลจาก data- attributes ทั้งหมด
-            var rowData = {
-                orderDate: $(this).data("orderdate"),
-                region: $(this).data("region"),
-                product: $(this).data("product")
-            };
-
-            $.ajax({
-                url: '@Url.Action("Delete", "Food")',
-                type: 'POST',
-                // ส่ง object ที่มีข้อมูลที่ครบถ้วน
-                data: rowData,
-                success: function(response){
-                    if (response.success) {
-                        $("#message").text("ลบข้อมูลสำเร็จ!");
-                        // หาลบ row ที่ถูกต้องบนหน้าเว็บ
-                        $(e.target).closest("tr").remove();
-                    } else {
-                        alert("เกิดข้อผิดพลาด: " + response.message);
-                    }
-                },
-                error: function(xhr){
-                    console.log(xhr.responseText);
-                    alert("เกิดข้อผิดพลาดในการลบข้อมูล");
-                }
-            });
-        });
-
         });
     </script>
-
-
 }

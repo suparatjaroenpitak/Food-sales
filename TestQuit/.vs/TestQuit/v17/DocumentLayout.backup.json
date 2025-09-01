@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\service\\ifood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -23,12 +23,20 @@
       "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\testfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\testfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
       "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,11 +46,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 8,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "TestFood\\Controllers\\HomeController.cs",
@@ -62,7 +70,7 @@
               "RelativeDocumentMoniker": "TestFood\\Controllers\\FoodController.cs",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\FoodController.cs",
               "RelativeToolTip": "TestFood\\Controllers\\FoodController.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAswBQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAIwFoAAAAIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-01T19:39:53.729Z",
               "IsPinned": true,
@@ -70,13 +78,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
               "RelativeDocumentMoniker": "TestFood\\Views\\Food\\Index.cshtml",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
               "RelativeToolTip": "TestFood\\Views\\Food\\Index.cshtml",
-              "ViewState": "AgIAAMYAAAAAAAAAAAAAwKMAAABFAAAAAAAAAA==",
+              "ViewState": "AgIAAMYAAAAAAAAAAADwv9IAAAAYAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-01T19:41:10.076Z",
               "IsPinned": true,
@@ -84,13 +92,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "FoodRepo.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\FoodRepo.cs",
               "RelativeDocumentMoniker": "TestFood\\Service\\FoodRepo.cs",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\FoodRepo.cs",
               "RelativeToolTip": "TestFood\\Service\\FoodRepo.cs",
-              "ViewState": "AgIAALwAAAAAAAAAAAAAANsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKQAAAAAAAAAAAAuwLoAAAA1AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-01T20:25:17.617Z",
               "IsPinned": true,
@@ -104,10 +112,36 @@
               "RelativeDocumentMoniker": "TestFood\\Models\\Food.cs",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Models\\Food.cs",
               "RelativeToolTip": "TestFood\\Models\\Food.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-01T20:21:12.945Z",
               "IsPinned": true,
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Startup.cs",
+              "RelativeDocumentMoniker": "TestFood\\Startup.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Startup.cs",
+              "RelativeToolTip": "TestFood\\Startup.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAACAAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T22:49:46.619Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "TestFood",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
+              "RelativeDocumentMoniker": "TestFood\\TestFood.csproj",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
+              "RelativeToolTip": "TestFood\\TestFood.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-01T22:38:09.774Z",
               "EditorCaption": ""
             },
             {
@@ -118,14 +152,14 @@
               "RelativeDocumentMoniker": "TestFood\\Service\\IFood.cs",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\IFood.cs",
               "RelativeToolTip": "TestFood\\Service\\IFood.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAqwAkAAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAqwA4AAAA3AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-09-01T21:06:02.507Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "TestFood\\wwwroot\\css\\site.css",

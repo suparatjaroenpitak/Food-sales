@@ -58,3 +58,4 @@ C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.dll
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.pdb
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.genruntimeconfig.cache
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll

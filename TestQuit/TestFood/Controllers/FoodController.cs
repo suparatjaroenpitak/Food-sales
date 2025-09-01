@@ -1,6 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using TestQuit.Models;
 using TestQuit.Service;
 
@@ -23,7 +25,13 @@ public class FoodController : Controller
     public IActionResult Create([FromBody] Food food)
     {
         if (food == null)
-            return Json(new { success = false, message = "ข้อมูลว่าง" });
+        {
+            return Json(new { success = false, message = "The provided data is null or could not be deserialized." });
+        }
+        if (!ModelState.IsValid)
+        {
+            return Json(new { success = false, message = "Validation failed.", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
+        }
 
         try
         {
@@ -32,7 +40,9 @@ public class FoodController : Controller
         }
         catch (Exception ex)
         {
-            return Json(new { success = false, message = ex.Message });
+            // Log the full exception details for debugging.
+            Console.WriteLine(ex.ToString());
+            return Json(new { success = false, message = "An error occurred: " + ex.Message });
         }
     }
     [HttpPost]
@@ -49,7 +59,7 @@ public class FoodController : Controller
         {
             Region = region,
             Product = product,
-            Quantity = quantity,
+            Quantity = int.Parse( quantity),
             UnitPrice = unitPrice,
             TotalPrice = decimal.Parse(quantity) * unitPrice
         };
@@ -98,5 +108,11 @@ public class FoodController : Controller
     {
         var filterResult = _foodService.fillter(date);
         return PartialView("_FoodTable", filterResult);
+    }
+    [HttpGet]
+    public IActionResult Sort(string sortBy, string sortDir)
+    {
+        var sortedFoods = _foodService.Sort(sortBy, sortDir);
+        return Json(sortedFoods);
     }
 }

@@ -63,9 +63,8 @@ namespace TestQuit.Service
 
         public List<Food> fillter(string date)
         {
-            var targetDate = DateTime.Parse(date);
             var cs = GetFoodFromExcel()
-                .Where(x => x.OrderDate.Date == targetDate.Date)
+                .Where(x => x.OrderDate == date)
                 .ToList();
             return cs;
         }
@@ -89,12 +88,12 @@ namespace TestQuit.Service
             {
                 var food = new Food
                 {
-                    OrderDate = ReadCell<DateTime>(worksheet.Cells[row, 1]),
+                    OrderDate = ReadCell<string>(worksheet.Cells[row, 1]),
                     Region = ReadCell<string>(worksheet.Cells[row, 2]),
                     City = ReadCell<string>(worksheet.Cells[row, 3]),
                     Category = ReadCell<string>(worksheet.Cells[row, 4]),
                     Product = ReadCell<string>(worksheet.Cells[row, 5]),
-                    Quantity = ReadCell<string>(worksheet.Cells[row, 6]),
+                    Quantity = ReadCell<int>(worksheet.Cells[row, 6]),
                     UnitPrice = ReadCell<decimal>(worksheet.Cells[row, 7]),
                     TotalPrice = ReadCell<decimal>(worksheet.Cells[row, 8])
                 };
@@ -177,26 +176,37 @@ namespace TestQuit.Service
             if (worksheet == null) return;
 
             int rowCount = worksheet.Dimension.End.Row;
+            int deletedCount = 0;
 
             for (int row = rowCount; row >= 2; row--)
             {
                 // อ่านข้อมูล OrderDate, Region, และ Product จากแถวปัจจุบัน
-                DateTime? orderDate = ReadCell<DateTime?>(worksheet.Cells[row, 1]);
                 string region = ReadCell<string>(worksheet.Cells[row, 2]);
                 string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
-                // ตรวจสอบความถูกต้องของข้อมูลทั้งหมด
-                if (orderDate.HasValue && orderDate.Value.Date == foodToDelete.OrderDate.Date &&
-                    region == foodToDelete.Region && product == foodToDelete.Product)
+                // ตรวจสอบความถูกต้องของข้อมูลทั้งหมด (ใช้ ToLower() เพื่อเปรียบเทียบแบบไม่สนใจตัวพิมพ์เล็ก-ใหญ่)
+                if (
+                    region != null && product != null &&
+                    region.Equals(foodToDelete.Region, StringComparison.OrdinalIgnoreCase) &&
+                    product.Equals(foodToDelete.Product, StringComparison.OrdinalIgnoreCase)
+                )
                 {
                     worksheet.DeleteRow(row);
                     Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{foodToDelete.Product}'");
-                    break; // หยุดการทำงานทันทีหลังจากพบและลบแถวแล้ว
+                    deletedCount++;
                 }
             }
 
-            // บันทึกไฟล์ Excel
-            package.Save();
+            if (deletedCount > 0)
+            {
+                // บันทึกไฟล์ Excel เฉพาะเมื่อมีการลบแถว
+                package.Save();
+                Console.WriteLine($"✅ ลบไป {deletedCount} แถวสำเร็จแล้ว");
+            }
+            else
+            {
+                Console.WriteLine($"ℹ️ ไม่พบแถวที่ตรงกับเงื่อนไข");
+            }
         }
 
         // ------------------- HELPER ------------------------
@@ -214,6 +224,47 @@ namespace TestQuit.Service
             {
                 return default;
             }
+        }
+
+        public List<Food> Sort(string sortBy, string sortDir)
+        {
+            var allFoods = GetFoodFromExcel();
+            IQueryable<Food> query = allFoods.AsQueryable();
+
+            // ใช้ switch เพื่อเลือก property ที่จะเรียงลำดับ
+            switch (sortBy)
+            {
+                case "OrderDate":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.OrderDate) : query.OrderByDescending(f => f.OrderDate);
+                    break;
+                case "Region":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.Region) : query.OrderByDescending(f => f.Region);
+                    break;
+                case "City":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.City) : query.OrderByDescending(f => f.City);
+                    break;
+                case "Category":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.Category) : query.OrderByDescending(f => f.Category);
+                    break;
+                case "Product":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.Product) : query.OrderByDescending(f => f.Product);
+                    break;
+                case "Quantity":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.Quantity) : query.OrderByDescending(f => f.Quantity);
+                    break;
+                case "UnitPrice":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.UnitPrice) : query.OrderByDescending(f => f.UnitPrice);
+                    break;
+                case "TotalPrice":
+                    query = (sortDir == "asc") ? query.OrderBy(f => f.TotalPrice) : query.OrderByDescending(f => f.TotalPrice);
+                    break;
+                default:
+                    // เรียงลำดับเริ่มต้น
+                    query = query.OrderBy(f => f.OrderDate);
+                    break;
+            }
+
+            return query.ToList();
         }
     }
 }
