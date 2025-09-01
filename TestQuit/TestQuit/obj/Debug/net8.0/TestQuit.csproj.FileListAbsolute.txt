@@ -1,0 +1,2 @@
+D:\งานเวฅ็บไซต์ เทฅ็มเพลต\BaseProject\Steaming_music\TestQuit\TestQuit\obj\Debug\net8.0\TestQuit.csproj.AssemblyReference.cache
+D:\TestQuit\TestQuit\obj\Debug\net8.0\TestQuit.csproj.AssemblyReference.cache

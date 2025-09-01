@@ -1,0 +1,8 @@
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.csproj.AssemblyReference.cache
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.GeneratedMSBuildEditorConfig.editorconfig
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.AssemblyInfoInputs.cache
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.AssemblyInfo.cs
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.csproj.CoreCompileInputs.cache
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.MvcApplicationPartsAssemblyInfo.cache
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.RazorAssemblyInfo.cache
+D:\TestQuit\TestQuit\obj\Release\netcoreapp3.1\TestQuit.RazorAssemblyInfo.cs

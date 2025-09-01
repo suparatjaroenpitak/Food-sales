@@ -1,0 +1,106 @@
+﻿@model List<TestQuit.Models.Food>
+
+@{
+    ViewBag.Title = "Food List";
+}
+
+<h2>Food List</h2>
+
+<div>
+    <label>ค้นหา Product: </label>
+    <input type="text" id="searchProduct" />
+    <button id="btnSearch">Search</button>
+
+    <label>กรองวันที่ (yyyy-MM-dd): </label>
+    <input type="date" id="filterDate" />
+    <button id="btnFilter">Filter</button>
+
+    <button id="btnRefresh">Refresh</button>
+</div>
+
+<table id="foodTable" border="1" cellpadding="5" cellspacing="0" style="margin-top:10px; width:100%;">
+    <thead>
+        <tr>
+            <th>OrderDate</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>UnitPrice</th>
+            <th>TotalPrice</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var food in Model)
+        {
+            <tr>
+                <td>@food.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@food.Region</td>
+                <td>@food.City</td>
+                <td>@food.Category</td>
+                <td>@food.Product</td>
+                <td>@food.Quantity</td>
+                <td>@food.UnitPrice</td>
+                <td>@food.TotalPrice</td>
+                <td>
+                    <a href="@Url.Action("Edit", "Food", new { productId = food.Product })">Edit</a> |
+                    <a href="#" class="btnDelete" data-product="@food.Product">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="message" style="margin-top:10px; color:green;"></div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(function () {
+
+
+            // Search
+            $("#btnSearch").click(function () {
+                var product = $("#searchProduct").val();
+                var url = '@Url.Action("Search", "Food")' + '?product=' + encodeURIComponent(product);
+                window.location.href = url;
+            });
+
+            // Filter
+            $("#btnFilter").click(function () {
+                var date = $("#filterDate").val();
+                var url = '@Url.Action("Filter", "Food")' + '?date=' + encodeURIComponent(date);
+                window.location.href = url;
+            });
+
+            // Refresh
+            $("#btnRefresh").click(function () {
+                window.location.href = '@Url.Action("Index", "Food")';
+            });
+
+            // Delete with confirmation and AJAX
+            $(".btnDelete").click(function (e) {
+                e.preventDefault();
+                if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
+
+                var productId = $(this).data("product");
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Food")',
+                    type: 'POST',
+                    data: { productId: productId },
+                    success: function (response) {
+                        // รีโหลดหน้าใหม่หลังลบ
+                        alert("ลบข้อมูลสำเร็จ");
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+                    }
+                });
+            });
+        });
+    </script>
+}
