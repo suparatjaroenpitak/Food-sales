@@ -68,7 +68,7 @@ namespace TestQuit.Service
 
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(FilePath));
-            var worksheet = package.Workbook.Worksheets[SheetName];
+            var worksheet = package.Workbook.Worksheets[0];
 
             if (worksheet == null)
                 return dataList;
@@ -100,7 +100,7 @@ namespace TestQuit.Service
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(FilePath));
 
-            var worksheet = package.Workbook.Worksheets[SheetName] ?? package.Workbook.Worksheets.Add(SheetName);
+            var worksheet = package.Workbook.Worksheets[0] ?? package.Workbook.Worksheets.Add(SheetName);
 
             if (worksheet.Dimension == null)
             {
@@ -134,7 +134,7 @@ namespace TestQuit.Service
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(FilePath));
-            var worksheet = package.Workbook.Worksheets[SheetName];
+            var worksheet = package.Workbook.Worksheets[0];
             if (worksheet == null) return;
 
             int rowCount = worksheet.Dimension.End.Row;
@@ -164,7 +164,7 @@ namespace TestQuit.Service
         {
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
             using var package = new ExcelPackage(new FileInfo(FilePath));
-            var worksheet = package.Workbook.Worksheets[SheetName];
+            var worksheet = package.Workbook.Worksheets[0];
             if (worksheet == null) return;
 
             int rowCount = worksheet.Dimension.End.Row;
