@@ -3,7 +3,7 @@
 @{
     ViewBag.Title = "Food List";
 }
-
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
 <style>
     body {
         background-color: #121212;
@@ -188,8 +188,9 @@
     <button id="btnSearch">Search</button>
 
     <label>กรองวันที่:</label>
-    <input type="date" id="filterDate" />
+    <input type="text" id="filterDate" placeholder="เลือกวันที่..." readonly />
     <button id="btnFilter">Filter</button>
+
 
     <button id="btnRefresh">Refresh</button>
 </div>
@@ -252,8 +253,27 @@
 
 @section Scripts {
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-datepicker/1.13.2/i18n/datepicker-th.min.js"></script>
     <script>
         $(function () {
+
+                 // Datepicker ภาษาไทย
+        $("#filterDate").datepicker({
+            dateFormat: 'yy-mm-dd', // format yyyy-mm-dd
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            monthNames: ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+                         "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],
+            monthNamesShort: ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],
+            onClose: function(dateText) {
+                // ถ้าต้องการ filter อัตโนมัติตอนเลือกวัน
+                // $("#btnFilter").click();
+            }
+        });
             // เปิด Modal ตอนกด Edit
             $(".btnEdit").click(function () {
                 var productId = $(this).data("product");
@@ -300,12 +320,15 @@
                 window.location.href = url;
             });
 
-            // Filter
-            $("#btnFilter").click(function () {
-                var date = $("#filterDate").val();
-                var url = '@Url.Action("Filter", "Food")' + '?date=' + encodeURIComponent(date);
-                window.location.href = url;
-            });
+                    $("#btnFilter").click(function () {
+            var date = $("#filterDate").val(); // ค่าจะอยู่ในรูป yyyy-mm-dd
+            if (!date) {
+                alert("กรุณาเลือกวันที่");
+                return;
+            }
+            var url = '@Url.Action("Filter", "Food")' + '?date=' + encodeURIComponent(date);
+            window.location.href = url;
+        });
 
             // Refresh
             $("#btnRefresh").click(function () {
