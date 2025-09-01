@@ -16,7 +16,9 @@
     <button id="btnSearch">Search</button>
 
     <label>กรองวันที่:</label>
-    <input type="date" id="filterDate" placeholder="เลือกวันที่..." readonly />
+    <input type="text" id="filterDate" />
+    <input type="hidden" id="hiddenDate" name="filterDate" />
+
     <button id="btnFilter">Filter</button>
 
 
@@ -87,8 +89,9 @@
     <script>
         $(function () {
 
-                   $("#filterDate").datepicker({
-            dateFormat: 'yy-mm-dd',
+
+                    $("#filterDate").datepicker({
+            dateFormat: 'dd/mm/yy',
             changeMonth: true,
             changeYear: true,
             showAnim: 'slideDown',
@@ -100,7 +103,7 @@
             beforeShow: function(input, inst) {
                 setTimeout(function() {
                     inst.dpDiv.find('.ui-datepicker-year option').each(function() {
-                        var val = parseInt($(this).val(), 10); // แปลงเป็น number
+                        var val = parseInt($(this).val(), 10);
                         $(this).text(val + 543); // แสดงปี พ.ศ.
                     });
                 }, 0);
@@ -109,21 +112,21 @@
             onChangeMonthYear: function(year, month, inst) {
                 setTimeout(function() {
                     inst.dpDiv.find('.ui-datepicker-year option').each(function() {
-                        var val = parseInt($(this).val(), 10); // แปลงเป็น number
+                        var val = parseInt($(this).val(), 10);
                         $(this).text(val + 543);
                     });
                 }, 0);
             },
 
             onClose: function(dateText, inst) {
-                // แปลงกลับเป็น ค.ศ. ก่อนส่งไป Controller
                 if (dateText) {
-                    var parts = dateText.split('-');
+                    // แปลงปี ค.ศ. -> พ.ศ. สำหรับ input
+                    var parts = dateText.split('/');
                     if (parts.length === 3) {
-                        var year = parseInt(parts[0], 10) - 543; // แปลงเป็น ค.ศ.
+                        var day = parts[0];
                         var month = parts[1];
-                        var day = parts[2];
-                        $(this).val(year + '-' + month + '-' + day);
+                        var year = parseInt(parts[2], 10) + 543;
+                        $(this).val(day + '/' + month + '/' + year); // แสดงเป็น พ.ศ.
                     }
                 }
             }

@@ -3,16 +3,19 @@
   "WorkspaceRootPath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -69,11 +72,24 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 11,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
+              "Title": "Microsoft.NET.EolTargetFrameworks.targets",
+              "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk\\targets\\Microsoft.NET.EolTargetFrameworks.targets",
+              "ViewState": "AgIAAAgAAAAAAAAAAADwvx8AAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-09-01T18:57:54.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
               "Title": "HomeController.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "TestFood\\Controllers\\HomeController.cs",
@@ -86,20 +102,20 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
               "RelativeDocumentMoniker": "TestFood\\Views\\Food\\Index.cshtml",
               "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
               "RelativeToolTip": "TestFood\\Views\\Food\\Index.cshtml",
-              "ViewState": "AgIAADEAAAAAAAAAAAAYwEQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAkwIIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-09-01T18:40:08.008Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Home\\Index.cshtml",
               "RelativeDocumentMoniker": "TestFood\\Views\\Home\\Index.cshtml",
@@ -112,7 +128,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 5,
               "Title": "_Layout.cshtml",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Shared\\_Layout.cshtml",
               "RelativeDocumentMoniker": "TestFood\\Views\\Shared\\_Layout.cshtml",
@@ -125,7 +141,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 6,
               "Title": "Startup.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Startup.cs",
               "RelativeDocumentMoniker": "TestFood\\Startup.cs",
@@ -138,7 +154,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 7,
               "Title": "Container.targets",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
@@ -151,7 +167,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 13,
               "Title": "IFood.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\IFood.cs",
               "RelativeDocumentMoniker": "TestFood\\Service\\IFood.cs",
@@ -164,7 +180,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 8,
               "Title": "TestFood",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
               "RelativeDocumentMoniker": "TestFood\\TestFood.csproj",
@@ -177,7 +193,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 12,
               "Title": "FoodRepo.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\FoodRepo.cs",
               "RelativeDocumentMoniker": "TestFood\\Service\\FoodRepo.cs",
@@ -190,7 +206,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 11,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "TestFood\\wwwroot\\css\\site.css",
@@ -203,7 +219,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 10,
               "Title": "Food.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Models\\Food.cs",
               "RelativeDocumentMoniker": "TestFood\\Models\\Food.cs",
@@ -216,7 +232,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 3,
               "Title": "FoodController.cs",
               "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\FoodController.cs",
               "RelativeDocumentMoniker": "TestFood\\Controllers\\FoodController.cs",
@@ -229,7 +245,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 14,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\7.0.0\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\7.0.0\\readme.txt",
@@ -242,7 +258,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 15,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
@@ -255,7 +271,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 16,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\6.1.1\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\6.1.1\\readme.txt",
@@ -268,7 +284,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 9,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
