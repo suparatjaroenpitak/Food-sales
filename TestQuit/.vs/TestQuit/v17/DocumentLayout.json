@@ -3,44 +3,63 @@
   "WorkspaceRootPath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\epplus\\7.0.0\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\testquit.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\testquit.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\epplus\\8.1.0\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\startup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\testfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\testfood.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\service\\foodrepo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testfood\\service\\ifood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{8946141F-63CE-4538-B46C-CF5B1FC35B8C}|TestFood\\TestFood.csproj|solutionrelative:testfood\\service\\ifood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\epplus\\7.0.0\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\epplus\\8.1.0\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ssss\\.nuget\\packages\\epplus\\6.1.1\\readme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\controllers\\foodcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\views\\food\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\service\\ifood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\service\\ifood.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|c:\\users\\ssss\\desktop\\webs\\food-sales\\testquit\\testquit\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{1DC4C0A8-F277-49B5-A3DB-A4D3EB883250}|TestQuit\\TestQuit.csproj|solutionrelative:testquit\\models\\food.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -50,11 +69,167 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "TestFood\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "TestFood\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:41:51.517Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
+              "RelativeDocumentMoniker": "TestFood\\Views\\Food\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Food\\Index.cshtml",
+              "RelativeToolTip": "TestFood\\Views\\Food\\Index.cshtml",
+              "ViewState": "AgIAAFMAAAAAAAAAAAAUwIIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T18:40:08.008Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "TestFood\\Views\\Home\\Index.cshtml",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "TestFood\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T18:39:43.358Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "TestFood\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "TestFood\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-09-01T18:39:35.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Startup.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Startup.cs",
+              "RelativeDocumentMoniker": "TestFood\\Startup.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Startup.cs",
+              "RelativeToolTip": "TestFood\\Startup.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAwwC8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:38:01.438Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Container.targets",
+              "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "ToolTip": "C:\\Users\\ssss\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "RelativeToolTip": "..\\..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "ViewState": "AgIAAMIAAAAAAAAAAAAqwNkAAAAEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2025-09-01T18:37:23.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "IFood.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\IFood.cs",
+              "RelativeDocumentMoniker": "TestFood\\Service\\IFood.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\IFood.cs",
+              "RelativeToolTip": "TestFood\\Service\\IFood.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:36:00.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "TestFood",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
+              "RelativeDocumentMoniker": "TestFood\\TestFood.csproj",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
+              "RelativeToolTip": "TestFood\\TestFood.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-09-01T18:33:53.632Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "FoodRepo.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\FoodRepo.cs",
+              "RelativeDocumentMoniker": "TestFood\\Service\\FoodRepo.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Service\\FoodRepo.cs",
+              "RelativeToolTip": "TestFood\\Service\\FoodRepo.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:34:49.462Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "TestFood\\wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "TestFood\\wwwroot\\css\\site.css",
+              "ViewState": "AgIAAIEAAAAAAAAAAAAiwK0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-09-01T18:33:58.557Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Food.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Models\\Food.cs",
+              "RelativeDocumentMoniker": "TestFood\\Models\\Food.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Models\\Food.cs",
+              "RelativeToolTip": "TestFood\\Models\\Food.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:33:36.495Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "FoodController.cs",
+              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\FoodController.cs",
+              "RelativeDocumentMoniker": "TestFood\\Controllers\\FoodController.cs",
+              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\Controllers\\FoodController.cs",
+              "RelativeToolTip": "TestFood\\Controllers\\FoodController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-09-01T18:32:24.664Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\7.0.0\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\7.0.0\\readme.txt",
@@ -67,7 +242,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 14,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\8.1.0\\readme.txt",
@@ -80,7 +255,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 15,
               "Title": "readme.txt",
               "DocumentMoniker": "C:\\Users\\ssss\\.nuget\\packages\\epplus\\6.1.1\\readme.txt",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\.nuget\\packages\\epplus\\6.1.1\\readme.txt",
@@ -93,104 +268,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "TestQuit.csproj",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj",
-              "RelativeDocumentMoniker": "TestQuit\\TestQuit.csproj",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\TestQuit.csproj",
-              "RelativeToolTip": "TestQuit\\TestQuit.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2025-09-01T17:11:36.49Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Program.cs",
-              "RelativeDocumentMoniker": "TestQuit\\Program.cs",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Program.cs",
-              "RelativeToolTip": "TestQuit\\Program.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:59:52.661Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Views\\Food\\Index.cshtml",
-              "RelativeDocumentMoniker": "TestQuit\\Views\\Food\\Index.cshtml",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Views\\Food\\Index.cshtml",
-              "RelativeToolTip": "TestQuit\\Views\\Food\\Index.cshtml",
-              "ViewState": "AgIAADsAAAAAAAAAAAAkwGoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-09-01T16:58:18.016Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "IFood.cs",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Service\\IFood.cs",
-              "RelativeDocumentMoniker": "TestQuit\\Service\\IFood.cs",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Service\\IFood.cs",
-              "RelativeToolTip": "TestQuit\\Service\\IFood.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:57:31.494Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "FoodRepo.cs",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Service\\FoodRepo.cs",
-              "RelativeDocumentMoniker": "TestQuit\\Service\\FoodRepo.cs",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Service\\FoodRepo.cs",
-              "RelativeToolTip": "TestQuit\\Service\\FoodRepo.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAD4AAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:56:53.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Food.cs",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Models\\Food.cs",
-              "RelativeDocumentMoniker": "TestQuit\\Models\\Food.cs",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Models\\Food.cs",
-              "RelativeToolTip": "TestQuit\\Models\\Food.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:56:39.814Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "FoodController.cs",
-              "DocumentMoniker": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Controllers\\FoodController.cs",
-              "RelativeDocumentMoniker": "TestQuit\\Controllers\\FoodController.cs",
-              "ToolTip": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestQuit\\Controllers\\FoodController.cs",
-              "RelativeToolTip": "TestQuit\\Controllers\\FoodController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-09-01T16:23:07.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
               "Title": "Microsoft.NET.Sdk.StaticWebAssets.targets",
               "DocumentMoniker": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "ToolTip": "C:\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
               "RelativeToolTip": "..\\..\\..\\..\\..\\..\\Program Files\\dotnet\\sdk\\9.0.300\\Sdks\\Microsoft.NET.Sdk.StaticWebAssets\\targets\\Microsoft.NET.Sdk.StaticWebAssets.targets",
-              "ViewState": "AgIAAJsCAAAAAAAAAAAnwLQCAAAEAAAAAAAAAA==",
+              "ViewState": "AgIAAJ0CAAAAAAAAAAAqwLQCAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
               "WhenOpened": "2025-09-01T15:57:17.252Z",
               "EditorCaption": ""

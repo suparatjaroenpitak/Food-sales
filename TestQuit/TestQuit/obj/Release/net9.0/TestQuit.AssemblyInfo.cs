@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TestQuit")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Release")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+150a426f24909953452f233f48a86a7c8d84b8ad")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+104fec5a9038898267a3ebce54bd92b389cb58f1")]
 [assembly: System.Reflection.AssemblyProductAttribute("TestQuit")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TestQuit")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

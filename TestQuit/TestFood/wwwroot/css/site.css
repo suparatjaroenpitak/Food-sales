@@ -1,0 +1,173 @@
+﻿body {
+    background-color: #121212;
+    color: #fff;
+    font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+h2 {
+    color: #1DB954;
+    margin-bottom: 20px;
+}
+
+/* Search & Filter Section */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+    .toolbar label {
+        font-weight: bold;
+        margin-right: 5px;
+    }
+
+    .toolbar input, .toolbar button {
+        padding: 8px 12px;
+        border: none;
+        border-radius: 20px;
+        outline: none;
+    }
+
+    .toolbar input {
+        background-color: #282828;
+        color: #fff;
+    }
+
+    .toolbar button {
+        background-color: #1DB954;
+        color: #fff;
+        cursor: pointer;
+        transition: background 0.3s;
+    }
+
+        .toolbar button:hover {
+            background-color: #1ed760;
+        }
+
+/* Table */
+#foodTable {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #181818;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+    #foodTable th, #foodTable td {
+        padding: 12px;
+        text-align: left;
+    }
+
+    #foodTable thead {
+        background-color: #282828;
+    }
+
+    #foodTable th {
+        color: #1DB954;
+    }
+
+    #foodTable tr:nth-child(even) {
+        background-color: #202020;
+    }
+
+    #foodTable tr:hover {
+        background-color: #333333;
+    }
+
+/* Buttons in Table */
+.btnEdit, .btnDelete {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9em;
+}
+
+.btnEdit {
+    background-color: #1DB954;
+    color: #fff;
+}
+
+    .btnEdit:hover {
+        background-color: #1ed760;
+    }
+
+.btnDelete {
+    background-color: #E91429;
+    color: #fff;
+}
+
+    .btnDelete:hover {
+        background-color: #ff4655;
+    }
+
+/* Modal */
+#editModal {
+    display: none;
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 400px;
+    background: #181818;
+    border-radius: 12px;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 0px 20px rgba(0,0,0,0.8);
+}
+
+    #editModal h3 {
+        color: #1DB954;
+        margin-bottom: 15px;
+    }
+
+    #editModal label {
+        display: block;
+        margin-top: 10px;
+        margin-bottom: 5px;
+        font-size: 0.9em;
+    }
+
+    #editModal input {
+        width: 100%;
+        padding: 8px;
+        border-radius: 8px;
+        border: none;
+        background-color: #282828;
+        color: #fff;
+        margin-bottom: 10px;
+    }
+
+    #editModal button {
+        padding: 8px 16px;
+        border: none;
+        border-radius: 20px;
+        margin-top: 10px;
+        cursor: pointer;
+    }
+
+#btnSaveEdit {
+    background-color: #1DB954;
+    color: #fff;
+}
+
+#btnCancelEdit {
+    background-color: #333;
+    color: #fff;
+}
+
+#btnSaveEdit:hover {
+    background-color: #1ed760;
+}
+
+#btnCancelEdit:hover {
+    background-color: #444;
+}
+
+#message {
+    margin-top: 15px;
+    font-weight: bold;
+    color: #1DB954;
+}

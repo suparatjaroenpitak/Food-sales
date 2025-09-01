@@ -1,0 +1,33 @@
+{
+  "version": 2,
+  "dgSpecHash": "WTTOnE0YCck=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ssss\\Desktop\\Webs\\Food-sales\\TestQuit\\TestFood\\TestFood.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ssss\\.nuget\\packages\\epplus\\7.0.0\\epplus.7.0.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\epplus.interfaces\\6.1.1\\epplus.interfaces.6.1.1.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\epplus.system.drawing\\6.1.1\\epplus.system.drawing.6.1.1.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.configuration\\3.1.30\\microsoft.extensions.configuration.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.configuration.abstractions\\3.1.30\\microsoft.extensions.configuration.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.configuration.fileextensions\\3.1.30\\microsoft.extensions.configuration.fileextensions.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.configuration.json\\3.1.30\\microsoft.extensions.configuration.json.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.fileproviders.abstractions\\3.1.30\\microsoft.extensions.fileproviders.abstractions.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.fileproviders.physical\\3.1.30\\microsoft.extensions.fileproviders.physical.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.filesystemglobbing\\3.1.30\\microsoft.extensions.filesystemglobbing.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.extensions.primitives\\3.1.30\\microsoft.extensions.primitives.3.1.30.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.io.recyclablememorystream\\2.3.2\\microsoft.io.recyclablememorystream.2.3.2.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.netcore.platforms\\3.1.9\\microsoft.netcore.platforms.3.1.9.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.netcore.targets\\1.1.0\\microsoft.netcore.targets.1.1.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\microsoft.visualstudio.azure.containers.tools.targets.1.22.1.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.componentmodel.annotations\\5.0.0\\system.componentmodel.annotations.5.0.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.drawing.common\\4.7.3\\system.drawing.common.4.7.3.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.drawing.primitives\\4.3.0\\system.drawing.primitives.4.3.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.runtime\\4.3.0\\system.runtime.4.3.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.runtime.extensions\\4.3.0\\system.runtime.extensions.4.3.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.security.cryptography.cng\\4.7.0\\system.security.cryptography.cng.4.7.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.security.cryptography.pkcs\\4.7.0\\system.security.cryptography.pkcs.4.7.0.nupkg.sha512",
+    "C:\\Users\\ssss\\.nuget\\packages\\system.text.encoding.codepages\\4.7.1\\system.text.encoding.codepages.4.7.1.nupkg.sha512"
+  ],
+  "logs": []
+}

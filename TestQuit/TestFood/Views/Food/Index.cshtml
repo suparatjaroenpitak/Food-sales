@@ -1,0 +1,216 @@
+﻿@model List<TestQuit.Models.Food>
+
+@{
+    ViewBag.Title = "Food List";
+}
+<link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+<style>
+
+</style>
+
+<h2>Food List</h2>
+
+<div class="toolbar">
+    <label>ค้นหา Product:</label>
+    <input type="text" id="searchProduct" placeholder="Type product name..." />
+    <button id="btnSearch">Search</button>
+
+    <label>กรองวันที่:</label>
+    <input type="date" id="filterDate" placeholder="เลือกวันที่..." readonly />
+    <button id="btnFilter">Filter</button>
+
+
+    <button id="btnRefresh">Refresh</button>
+</div>
+
+<table id="foodTable">
+    <thead>
+        <tr>
+            <th>OrderDate</th>
+            <th>Region</th>
+            <th>City</th>
+            <th>Category</th>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>UnitPrice</th>
+            <th>TotalPrice</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var food in Model)
+        {
+            <tr>
+                <td>@food.OrderDate.ToString("yyyy-MM-dd")</td>
+                <td>@food.Region</td>
+                <td>@food.City</td>
+                <td>@food.Category</td>
+                <td>@food.Product</td>
+                <td>@food.Quantity</td>
+                <td>@food.UnitPrice</td>
+                <td>@food.TotalPrice</td>
+                <td>
+                    <button class="btnEdit"
+                            data-product="@food.Product"
+                            data-quantity="@food.Quantity"
+                            data-unitprice="@food.UnitPrice">
+                        Edit
+                    </button>
+                    <button class="btnDelete" data-product="@food.Product">Delete</button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div id="editModal">
+    <h3>แก้ไขข้อมูล</h3>
+    <input type="hidden" id="editProductId" />
+
+    <label>Quantity:</label>
+    <input type="text" id="editQuantity" />
+
+    <label>UnitPrice:</label>
+    <input type="text" id="editUnitPrice" />
+
+    <button id="btnSaveEdit">Save</button>
+    <button id="btnCancelEdit">Cancel</button>
+</div>
+
+<div id="message"></div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-datepicker/1.13.2/i18n/datepicker-th.min.js"></script>
+    <script>
+        $(function () {
+
+                   $("#filterDate").datepicker({
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            showAnim: 'slideDown',
+            dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+            monthNames: ["มกราคม","กุมภาพันธ์","มีนาคม","เมษายน","พฤษภาคม","มิถุนายน",
+                         "กรกฎาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม"],
+            monthNamesShort: ["ม.ค.","ก.พ.","มี.ค.","เม.ย.","พ.ค.","มิ.ย.","ก.ค.","ส.ค.","ก.ย.","ต.ค.","พ.ย.","ธ.ค."],
+
+            beforeShow: function(input, inst) {
+                setTimeout(function() {
+                    inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                        var val = parseInt($(this).val(), 10); // แปลงเป็น number
+                        $(this).text(val + 543); // แสดงปี พ.ศ.
+                    });
+                }, 0);
+            },
+
+            onChangeMonthYear: function(year, month, inst) {
+                setTimeout(function() {
+                    inst.dpDiv.find('.ui-datepicker-year option').each(function() {
+                        var val = parseInt($(this).val(), 10); // แปลงเป็น number
+                        $(this).text(val + 543);
+                    });
+                }, 0);
+            },
+
+            onClose: function(dateText, inst) {
+                // แปลงกลับเป็น ค.ศ. ก่อนส่งไป Controller
+                if (dateText) {
+                    var parts = dateText.split('-');
+                    if (parts.length === 3) {
+                        var year = parseInt(parts[0], 10) - 543; // แปลงเป็น ค.ศ.
+                        var month = parts[1];
+                        var day = parts[2];
+                        $(this).val(year + '-' + month + '-' + day);
+                    }
+                }
+            }
+        });
+
+
+            // เปิด Modal ตอนกด Edit
+            $(".btnEdit").click(function () {
+                var productId = $(this).data("product");
+                var quantity = $(this).data("quantity");
+                var unitPrice = $(this).data("unitprice");
+
+                $("#editProductId").val(productId);
+                $("#editQuantity").val(quantity);
+                $("#editUnitPrice").val(unitPrice);
+
+                $("#editModal").fadeIn();
+            });
+
+            // ปิด Modal
+            $("#btnCancelEdit").click(function () {
+                $("#editModal").fadeOut();
+            });
+
+            // Save ข้อมูลที่แก้ไข
+            $("#btnSaveEdit").click(function () {
+                var productId = $("#editProductId").val();
+                var quantity = $("#editQuantity").val();
+                var unitPrice = $("#editUnitPrice").val();
+
+                $.ajax({
+                    url: '@Url.Action("Edit", "Food")',
+                    type: 'POST',
+                    data: { productId: productId, quantity: quantity, unitPrice: unitPrice },
+                    success: function (response) {
+                        $("#message").text("อัปเดตข้อมูลสำเร็จ!");
+                        $("#editModal").fadeOut();
+                        setTimeout(() => window.location.reload(), 1000);
+                    },
+                    error: function () {
+                        alert("เกิดข้อผิดพลาดในการอัปเดตข้อมูล");
+                    }
+                });
+            });
+
+            // Search
+            $("#btnSearch").click(function () {
+                var product = $("#searchProduct").val();
+                var url = '@Url.Action("Search", "Food")' + '?product=' + encodeURIComponent(product);
+                window.location.href = url;
+            });
+
+                    $("#btnFilter").click(function () {
+            var date = $("#filterDate").val(); // ค่าจะอยู่ในรูป yyyy-mm-dd
+            if (!date) {
+                alert("กรุณาเลือกวันที่");
+                return;
+            }
+            var url = '@Url.Action("Filter", "Food")' + '?date=' + encodeURIComponent(date);
+            window.location.href = url;
+        });
+
+            // Refresh
+            $("#btnRefresh").click(function () {
+                window.location.href = '@Url.Action("Index", "Food")';
+            });
+
+            // Delete with confirmation and AJAX
+            $(".btnDelete").click(function (e) {
+                e.preventDefault();
+                if (!confirm("ต้องการลบข้อมูลนี้ใช่หรือไม่?")) return;
+
+                var productId = $(this).data("product");
+
+                $.ajax({
+                    url: '@Url.Action("Delete", "Food")',
+                    type: 'POST',
+                    data: { productId: productId },
+                    success: function (response) {
+                        alert("ลบข้อมูลสำเร็จ");
+                        window.location.reload();
+                    },
+                    error: function () {
+                        alert("เกิดข้อผิดพลาดในการลบข้อมูล");
+                    }
+                });
+            });
+        });
+    </script>
+}
