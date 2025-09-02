@@ -218,31 +218,45 @@
             });
 
             $("#filterDate, #createOrderDate").datepicker({
-                dateFormat: 'dd/mm/yy',
-                changeMonth: true,
-                changeYear: true,
-                showAnim: 'slideDown',
-                dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
-                monthNames: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
-                    "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
-                monthNamesShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
-                beforeShow: function (input, inst) {
-                    setTimeout(function () {
-                        inst.dpDiv.find('.ui-datepicker-year option').each(function () {
-                            var val = parseInt($(this).val(), 10);
-                            $(this).text(val + 543);
-                        });
-                    }, 0);
-                },
-                onChangeMonthYear: function (year, month, inst) {
-                    setTimeout(function () {
-                        inst.dpDiv.find('.ui-datepicker-year option').each(function () {
-                            var val = parseInt($(this).val(), 10);
-                            $(this).text(val + 543);
-                        });
-                    }, 0);
-                }
-            });
+                        dateFormat: 'dd/mm/yy',
+                        changeMonth: true,
+                        changeYear: true,
+                        showAnim: 'slideDown',
+                        dayNamesMin: ["อา", "จ", "อ", "พ", "พฤ", "ศ", "ส"],
+                        monthNames: ["มกราคม", "กุมภาพันธ์", "มีนาคม", "เมษายน", "พฤษภาคม", "มิถุนายน",
+                            "กรกฎาคม", "สิงหาคม", "กันยายน", "ตุลาคม", "พฤศจิกายน", "ธันวาคม"],
+                        monthNamesShort: ["ม.ค.", "ก.พ.", "มี.ค.", "เม.ย.", "พ.ค.", "มิ.ย.", "ก.ค.", "ส.ค.", "ก.ย.", "ต.ค.", "พ.ย.", "ธ.ค."],
+
+                        onSelect: function(dateText, inst) {
+                            var parts = dateText.split('/');
+                            var gregorianYear = parseInt(parts[2], 10);
+                            var buddhistYear = gregorianYear + 543;
+
+                            // Convert day and month to numbers to remove leading zeros
+                            var day = parseInt(parts[0], 10);
+                            var month = parseInt(parts[1], 10);
+
+                            // Update the input value with the Buddhist year and stripped leading zeros
+                            $(this).val(day + '/' + month + '/' + buddhistYear);
+                        },
+
+                        beforeShow: function (input, inst) {
+                            setTimeout(function () {
+                                inst.dpDiv.find('.ui-datepicker-year option').each(function () {
+                                    var val = parseInt($(this).val(), 10);
+                                    $(this).text(val + 543);
+                                });
+                            }, 0);
+                        },
+                        onChangeMonthYear: function (year, month, inst) {
+                            setTimeout(function () {
+                                inst.dpDiv.find('.ui-datepicker-year option').each(function () {
+                                    var val = parseInt($(this).val(), 10);
+                                    $(this).text(val + 543);
+                                });
+                            }, 0);
+                        }
+                    });
 
             $("#btnCreate").click(function () {
                 $("#createModal").fadeIn();

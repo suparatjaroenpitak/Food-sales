@@ -22,9 +22,6 @@ C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\Microsoft.IO.RecyclableMemoryStream.dll
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.ComponentModel.Annotations.dll
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Text.Encoding.CodePages.dll
-C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll
-C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Text.Encoding.CodePages.dll
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.csproj.AssemblyReference.cache
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.AssemblyInfoInputs.cache
@@ -59,3 +56,12 @@ C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.pdb
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\obj\Debug\netcoreapp3.1\TestFood.genruntimeconfig.cache
 C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Formats.Asn1.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Runtime.CompilerServices.Unsafe.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Cng.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Security.Cryptography.Pkcs.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Text.Encodings.Web.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\System.Text.Json.dll
+C:\Users\ssss\Desktop\Webs\Food-sales\TestQuit\TestFood\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Security.Cryptography.Cng.dll

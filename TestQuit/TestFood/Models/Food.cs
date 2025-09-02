@@ -5,7 +5,7 @@ namespace TestQuit.Models
     public class Food
     {
         // OrderDate เป็น string เพราะคุณส่งมาในรูปแบบสตริง
-        public string OrderDate { get; set; }
+        public DateTime OrderDate { get; set; }
 
         // ข้อมูลเหล่านี้เป็น string ทั้งหมด
         public string Region { get; set; }

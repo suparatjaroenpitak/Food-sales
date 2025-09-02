@@ -69,14 +69,17 @@ namespace TestQuit.Service
         public List<Food> Search(string product)
         {
             var allFoods = GetFoodFromExcel();
-            return allFoods.Where(x => x.Product?.Equals(product, StringComparison.OrdinalIgnoreCase) == true).ToList();
+            return allFoods.Where(x => x.Product?.Contains(product, StringComparison.OrdinalIgnoreCase) == true).ToList();
         }
 
         // Refactored Filter Method
-        public List<Food> fillter(string date)
+        public List<Food> fillter(DateTime date)
         {
+            int buddhistYear = date.Year + 543;
+            DateTime buddhistDate = new DateTime(buddhistYear, date.Month, date.Day);
             var allFoods = GetFoodFromExcel();
-            return allFoods.Where(x => x.OrderDate?.Equals(date, StringComparison.OrdinalIgnoreCase) == true).ToList();
+            var list = allFoods.Where(x => x.OrderDate == buddhistDate).ToList();
+            return list;
         }
 
         // ------------------- CORE EXCEL METHODS ------------------------
@@ -103,7 +106,7 @@ namespace TestQuit.Service
             {
                 var food = new Food
                 {
-                    OrderDate = ReadCell<string>(worksheet.Cells[row, 1]),
+                    OrderDate = ReadCell<DateTime>(worksheet.Cells[row, 1]),
                     Region = ReadCell<string>(worksheet.Cells[row, 2]),
                     City = ReadCell<string>(worksheet.Cells[row, 3]),
                     Category = ReadCell<string>(worksheet.Cells[row, 4]),
@@ -140,8 +143,13 @@ namespace TestQuit.Service
 
             int newRow = worksheet.Dimension.End.Row + 1;
 
+            int buddhistYear = food.OrderDate.Year + 543;
 
-            worksheet.Cells[newRow, 1].Value = food.OrderDate ;
+            // Create a new date with the Buddhist Era year
+            DateTime buddhistDate = new DateTime(buddhistYear, food.OrderDate.Month, food.OrderDate.Day);
+
+
+            worksheet.Cells[newRow, 1].Value = buddhistDate;
             worksheet.Cells[newRow, 2].Value = food.Region;
             worksheet.Cells[newRow, 3].Value = food.City;
             worksheet.Cells[newRow, 4].Value = food.Category;
@@ -188,24 +196,39 @@ namespace TestQuit.Service
             try
             {
                 ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-                using var package = new ExcelPackage(new FileInfo(FilePath));
+                var fileInfo = new FileInfo(FilePath);
+
+                // Check if the file exists before trying to access it
+                if (!fileInfo.Exists)
+                {
+                    Console.WriteLine("ℹ️ Excel file not found. Nothing to delete.");
+                    return;
+                }
+
+                using var package = new ExcelPackage(fileInfo);
                 var worksheet = package.Workbook.Worksheets[0];
-                if (worksheet == null) return;
+                if (worksheet == null)
+                {
+                    Console.WriteLine("⚠️ Worksheet not found. Nothing to delete.");
+                    return;
+                }
 
                 int rowCount = worksheet.Dimension.End.Row;
                 int deletedCount = 0;
 
+                // Loop backwards to avoid issues with row indexes changing after a deletion
                 for (int row = rowCount; row >= 2; row--)
                 {
                     string region = ReadCell<string>(worksheet.Cells[row, 2]);
                     string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
                     if (
-                        region != null && product != null &&
+                        !string.IsNullOrEmpty(region) && !string.IsNullOrEmpty(product) &&
                         region.Equals(foodToDelete.Region, StringComparison.OrdinalIgnoreCase) &&
                         product.Equals(foodToDelete.Product, StringComparison.OrdinalIgnoreCase)
                     )
                     {
+                        worksheet.Cells[row, 1, row, worksheet.Dimension.End.Column].Clear();
                         worksheet.DeleteRow(row);
                         Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{foodToDelete.Product}'");
                         deletedCount++;
@@ -214,18 +237,20 @@ namespace TestQuit.Service
 
                 if (deletedCount > 0)
                 {
+                    // Only save if changes were made
                     package.Save();
                     Console.WriteLine($"✅ ลบไป {deletedCount} แถวสำเร็จแล้ว");
                 }
                 else
                 {
-                    Console.WriteLine($"ℹ️ ไม่พบแถวที่ตรงกับเงื่อนไข");
+                    Console.WriteLine("ℹ️ ไม่พบแถวที่ตรงกับเงื่อนไข");
                 }
             }
             catch (Exception ex)
             {
-                ex.Message.ToString();
-            
+                Console.WriteLine($"❌ เกิดข้อผิดพลาดในการลบข้อมูล: {ex.Message}");
+                // Log the full exception details for debugging
+                Console.WriteLine(ex.StackTrace);
             }
         }
         // ------------------- HELPER ------------------------
