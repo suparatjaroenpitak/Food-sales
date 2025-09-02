@@ -31,8 +31,8 @@ public class FoodController : Controller
         try
         {
             DateTime date = DateTime.Parse(food.OrderDate);
-            int buddhistYear = date.Year + 543 + 543;
-            string OrderDates = $"{buddhistYear:D4}/{date.Month:D2}/{date.Day:D2}";
+            int Year = date.Year + 543 + 543;
+            string OrderDates = $"{date.Day:D2}/{date.Month:D2}/{Year:D4}";
             food.OrderDate = OrderDates;
             var message = _foodService.Create(food);
             return Json(new { success = true, message });
@@ -88,7 +88,10 @@ public class FoodController : Controller
     [HttpGet]
     public IActionResult Filter(string date)
     {
-        var filterResult = _foodService.fillter(date);
+        DateTime dates = DateTime.Parse(date);
+        int Year = dates.Year + 543 + 543;
+        string OrderDates = $"{dates.Day:D2}/{dates.Month:D2}/{Year:D4}";
+        var filterResult = _foodService.fillter(OrderDates);
         return Json(filterResult);
     }
 
