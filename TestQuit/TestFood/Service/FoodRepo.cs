@@ -185,42 +185,49 @@ namespace TestQuit.Service
 
         private void DeleteFoodFromExcel(Food foodToDelete)
         {
-            ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-            using var package = new ExcelPackage(new FileInfo(FilePath));
-            var worksheet = package.Workbook.Worksheets[0];
-            if (worksheet == null) return;
-
-            int rowCount = worksheet.Dimension.End.Row;
-            int deletedCount = 0;
-
-            for (int row = rowCount; row >= 2; row--)
+            try
             {
-                string region = ReadCell<string>(worksheet.Cells[row, 2]);
-                string product = ReadCell<string>(worksheet.Cells[row, 5]);
+                ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+                using var package = new ExcelPackage(new FileInfo(FilePath));
+                var worksheet = package.Workbook.Worksheets[0];
+                if (worksheet == null) return;
 
-                if (
-                    region != null && product != null &&
-                    region.Equals(foodToDelete.Region, StringComparison.OrdinalIgnoreCase) &&
-                    product.Equals(foodToDelete.Product, StringComparison.OrdinalIgnoreCase)
-                )
+                int rowCount = worksheet.Dimension.End.Row;
+                int deletedCount = 0;
+
+                for (int row = rowCount; row >= 2; row--)
                 {
-                    worksheet.DeleteRow(row);
-                    Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{foodToDelete.Product}'");
-                    deletedCount++;
+                    string region = ReadCell<string>(worksheet.Cells[row, 2]);
+                    string product = ReadCell<string>(worksheet.Cells[row, 5]);
+
+                    if (
+                        region != null && product != null &&
+                        region.Equals(foodToDelete.Region, StringComparison.OrdinalIgnoreCase) &&
+                        product.Equals(foodToDelete.Product, StringComparison.OrdinalIgnoreCase)
+                    )
+                    {
+                        worksheet.DeleteRow(row);
+                        Console.WriteLine($"🔴 ลบแถวที่ {row} ที่มี Product = '{foodToDelete.Product}'");
+                        deletedCount++;
+                    }
+                }
+
+                if (deletedCount > 0)
+                {
+                    package.Save();
+                    Console.WriteLine($"✅ ลบไป {deletedCount} แถวสำเร็จแล้ว");
+                }
+                else
+                {
+                    Console.WriteLine($"ℹ️ ไม่พบแถวที่ตรงกับเงื่อนไข");
                 }
             }
-
-            if (deletedCount > 0)
+            catch (Exception ex)
             {
-                package.Save();
-                Console.WriteLine($"✅ ลบไป {deletedCount} แถวสำเร็จแล้ว");
-            }
-            else
-            {
-                Console.WriteLine($"ℹ️ ไม่พบแถวที่ตรงกับเงื่อนไข");
+                ex.Message.ToString();
+            
             }
         }
-
         // ------------------- HELPER ------------------------
 
         private T ReadCell<T>(ExcelRange cell)

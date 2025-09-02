@@ -8,21 +8,15 @@ using TestQuit.Service;
 public class FoodController : Controller
 {
     private readonly IFood _foodService;
-
     public FoodController(IFood foodService)
     {
         _foodService = foodService;
     }
-
-    // Displays the main page with a sorted list of food items
     public IActionResult Index()
     {
-        // Default sort (e.g., by OrderDate) can be handled in the service layer.
         var allFoods = _foodService.Sort("OrderDate", "asc");
         return View(allFoods);
     }
-
-    // Handles creating a new food item from a JSON payload
     [HttpPost]
     public IActionResult Create([FromBody] Food food)
     {
@@ -50,8 +44,6 @@ public class FoodController : Controller
             return Json(new { success = false, message = "An error occurred: " + ex.Message });
         }
     }
-
-    // Handles editing an existing food item from a form-urlencoded payload
     [HttpPost]
     public IActionResult Edit([FromForm] Food food)
     {
@@ -70,8 +62,6 @@ public class FoodController : Controller
             return Json(new { success = false, message = ex.Message });
         }
     }
-
-    // Handles deleting a food item from a form-urlencoded payload
     [HttpPost]
     public IActionResult Delete([FromForm] Food food)
     {
@@ -89,26 +79,19 @@ public class FoodController : Controller
             return Json(new { success = false, message = ex.Message });
         }
     }
-
-    // Searches for food items and returns a JSON result
     [HttpGet]
     public IActionResult Search(string product)
     {
         var searchResult = _foodService.Search(product);
         return Json(searchResult);
     }
-
-    // Filters food items and returns a JSON result
     [HttpGet]
     public IActionResult Filter(string date)
     {
-        // Assuming your fillter method is renamed to Filter in the service
         var filterResult = _foodService.fillter(date);
-        // Returning JSON is more flexible for front-end frameworks
         return Json(filterResult);
     }
 
-    // Sorts food items and returns a JSON result
     [HttpGet]
     public IActionResult Sort(string sortBy, string sortDir)
     {
