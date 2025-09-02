@@ -21,10 +21,7 @@ namespace TestQuit.Service
         private string FilePath => Path.Combine(_env.WebRootPath, "Data", "Food sales.xlsx");
         private const string SheetName = "Foods";
 
-        public List<Food> GetFood()
-        {
-            return GetFoodFromExcel();
-        }
+        public List<Food> GetFood() => GetFoodFromExcel();
 
         public string Create(Food food)
         {
@@ -32,7 +29,6 @@ namespace TestQuit.Service
             return "บันทึกสำเร็จ";
         }
 
-        // เมธอด Delete ที่ปรับปรุงใหม่ให้รับ Food object
         public string Delete(Food food)
         {
             DeleteFoodFromExcel(food);
@@ -45,28 +41,42 @@ namespace TestQuit.Service
             return "บันทึกเรียบร้อย";
         }
 
-        public List<Food> Sort(string product)
+        // Refactored Sorting Method
+        public List<Food> Sort(string sortBy, string sortDir)
         {
-            var cs = GetFoodFromExcel()
-                .OrderByDescending(x => x.Product)
-                .ToList();
-            return cs;
+            var allFoods = GetFoodFromExcel();
+            var sortedFoods = allFoods.AsQueryable();
+
+            if (string.IsNullOrEmpty(sortBy)) return sortedFoods.ToList();
+
+            // Use reflection to get the property to sort by dynamically
+            var property = typeof(Food).GetProperty(sortBy, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+            if (property == null) return sortedFoods.ToList();
+
+            if (sortDir?.ToLower() == "desc")
+            {
+                sortedFoods = sortedFoods.OrderByDescending(x => property.GetValue(x, null));
+            }
+            else
+            {
+                sortedFoods = sortedFoods.OrderBy(x => property.GetValue(x, null));
+            }
+
+            return sortedFoods.ToList();
         }
 
+        // Refactored Search Method
         public List<Food> Search(string product)
         {
-            var cs = GetFoodFromExcel()
-                .Where(x => x.Product == product)
-                .ToList();
-            return cs;
+            var allFoods = GetFoodFromExcel();
+            return allFoods.Where(x => x.Product?.Equals(product, StringComparison.OrdinalIgnoreCase) == true).ToList();
         }
 
+        // Refactored Filter Method
         public List<Food> fillter(string date)
         {
-            var cs = GetFoodFromExcel()
-                .Where(x => x.OrderDate == date)
-                .ToList();
-            return cs;
+            var allFoods = GetFoodFromExcel();
+            return allFoods.Where(x => x.OrderDate?.Equals(date, StringComparison.OrdinalIgnoreCase) == true).ToList();
         }
 
         // ------------------- CORE EXCEL METHODS ------------------------
@@ -74,13 +84,18 @@ namespace TestQuit.Service
         private List<Food> GetFoodFromExcel()
         {
             List<Food> dataList = new List<Food>();
-
             ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
+            if (!File.Exists(FilePath))
+            {
+                Console.WriteLine($"⚠️ Excel file not found at: {FilePath}");
+                return dataList;
+            }
+
             using var package = new ExcelPackage(new FileInfo(FilePath));
             var worksheet = package.Workbook.Worksheets[0];
 
-            if (worksheet == null)
-                return dataList;
+            if (worksheet == null) return dataList;
 
             int rowCount = worksheet.Dimension.End.Row;
 
@@ -97,7 +112,6 @@ namespace TestQuit.Service
                     UnitPrice = ReadCell<decimal>(worksheet.Cells[row, 7]),
                     TotalPrice = ReadCell<decimal>(worksheet.Cells[row, 8])
                 };
-
                 dataList.Add(food);
             }
 
@@ -126,7 +140,8 @@ namespace TestQuit.Service
 
             int newRow = worksheet.Dimension.End.Row + 1;
 
-            worksheet.Cells[newRow, 1].Value = food.OrderDate;
+
+            worksheet.Cells[newRow, 1].Value = food.OrderDate ;
             worksheet.Cells[newRow, 2].Value = food.Region;
             worksheet.Cells[newRow, 3].Value = food.City;
             worksheet.Cells[newRow, 4].Value = food.Category;
@@ -150,11 +165,11 @@ namespace TestQuit.Service
 
             for (int row = 2; row <= rowCount; row++)
             {
-                DateTime? date = ReadCell<DateTime?>(worksheet.Cells[row, 1]);
+                // Assuming you use `OrderDate`, `Region`, and `Product` as unique identifiers for a record
                 string region = ReadCell<string>(worksheet.Cells[row, 2]);
                 string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
-                if ( region == food.Region && product == food.Product)
+                if (region.Equals(food.Region, StringComparison.OrdinalIgnoreCase) && product.Equals(food.Product, StringComparison.OrdinalIgnoreCase))
                 {
                     worksheet.Cells[row, 6].Value = food.Quantity;
                     worksheet.Cells[row, 7].Value = food.UnitPrice;
@@ -180,11 +195,9 @@ namespace TestQuit.Service
 
             for (int row = rowCount; row >= 2; row--)
             {
-                // อ่านข้อมูล OrderDate, Region, และ Product จากแถวปัจจุบัน
                 string region = ReadCell<string>(worksheet.Cells[row, 2]);
                 string product = ReadCell<string>(worksheet.Cells[row, 5]);
 
-                // ตรวจสอบความถูกต้องของข้อมูลทั้งหมด (ใช้ ToLower() เพื่อเปรียบเทียบแบบไม่สนใจตัวพิมพ์เล็ก-ใหญ่)
                 if (
                     region != null && product != null &&
                     region.Equals(foodToDelete.Region, StringComparison.OrdinalIgnoreCase) &&
@@ -199,7 +212,6 @@ namespace TestQuit.Service
 
             if (deletedCount > 0)
             {
-                // บันทึกไฟล์ Excel เฉพาะเมื่อมีการลบแถว
                 package.Save();
                 Console.WriteLine($"✅ ลบไป {deletedCount} แถวสำเร็จแล้ว");
             }
@@ -215,56 +227,27 @@ namespace TestQuit.Service
         {
             try
             {
-                var val = cell?.Value?.ToString();
+                if (cell?.Value == null) return default;
+                var val = cell.Value.ToString();
                 if (string.IsNullOrWhiteSpace(val)) return default;
+
+                // Handle date conversion specifically if needed
+                if (typeof(T) == typeof(DateTime) || typeof(T) == typeof(DateTime?))
+                {
+                    if (DateTime.TryParse(val, out DateTime parsedDate))
+                    {
+                        return (T)(object)parsedDate;
+                    }
+                    return default;
+                }
 
                 return (T)Convert.ChangeType(val, typeof(T));
             }
-            catch
+            catch (Exception ex)
             {
+                Console.WriteLine($"Error reading cell value: {ex.Message}");
                 return default;
             }
-        }
-
-        public List<Food> Sort(string sortBy, string sortDir)
-        {
-            var allFoods = GetFoodFromExcel();
-            IQueryable<Food> query = allFoods.AsQueryable();
-
-            // ใช้ switch เพื่อเลือก property ที่จะเรียงลำดับ
-            switch (sortBy)
-            {
-                case "OrderDate":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.OrderDate) : query.OrderByDescending(f => f.OrderDate);
-                    break;
-                case "Region":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.Region) : query.OrderByDescending(f => f.Region);
-                    break;
-                case "City":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.City) : query.OrderByDescending(f => f.City);
-                    break;
-                case "Category":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.Category) : query.OrderByDescending(f => f.Category);
-                    break;
-                case "Product":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.Product) : query.OrderByDescending(f => f.Product);
-                    break;
-                case "Quantity":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.Quantity) : query.OrderByDescending(f => f.Quantity);
-                    break;
-                case "UnitPrice":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.UnitPrice) : query.OrderByDescending(f => f.UnitPrice);
-                    break;
-                case "TotalPrice":
-                    query = (sortDir == "asc") ? query.OrderBy(f => f.TotalPrice) : query.OrderByDescending(f => f.TotalPrice);
-                    break;
-                default:
-                    // เรียงลำดับเริ่มต้น
-                    query = query.OrderBy(f => f.OrderDate);
-                    break;
-            }
-
-            return query.ToList();
         }
     }
 }

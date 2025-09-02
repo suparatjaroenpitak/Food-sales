@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,26 +14,32 @@ public class FoodController : Controller
         _foodService = foodService;
     }
 
+    // Displays the main page with a sorted list of food items
     public IActionResult Index()
     {
-        var allFoods = _foodService.Sort("");
+        // Default sort (e.g., by OrderDate) can be handled in the service layer.
+        var allFoods = _foodService.Sort("OrderDate", "asc");
         return View(allFoods);
     }
 
+    // Handles creating a new food item from a JSON payload
     [HttpPost]
     public IActionResult Create([FromBody] Food food)
     {
-        if (food == null)
-        {
-            return Json(new { success = false, message = "The provided data is null or could not be deserialized." });
-        }
         if (!ModelState.IsValid)
         {
-            return Json(new { success = false, message = "Validation failed.", errors = ModelState.Values.SelectMany(v => v.Errors).Select(e => e.ErrorMessage) });
+            var errors = ModelState.Values
+                .SelectMany(v => v.Errors)
+                .Select(e => e.ErrorMessage)
+                .ToList();
+            return Json(new { success = false, message = "Validation failed.", errors });
         }
-
         try
         {
+            DateTime date = DateTime.Parse(food.OrderDate);
+            int buddhistYear = date.Year + 543 + 543;
+            string OrderDates = $"{buddhistYear:D4}/{date.Month:D2}/{date.Day:D2}";
+            food.OrderDate = OrderDates;
             var message = _foodService.Create(food);
             return Json(new { success = true, message });
         }
@@ -45,28 +50,19 @@ public class FoodController : Controller
             return Json(new { success = false, message = "An error occurred: " + ex.Message });
         }
     }
+
+    // Handles editing an existing food item from a form-urlencoded payload
     [HttpPost]
-    public IActionResult Edit(string orderDate, string region, string product, string quantity, decimal unitPrice)
+    public IActionResult Edit([FromForm] Food food)
     {
-        // Validate the received data
-        if (string.IsNullOrEmpty(product))
+        // The model binder automatically populates the food object
+        if (food == null || string.IsNullOrEmpty(food.Product) || !ModelState.IsValid)
         {
-            return Json(new { success = false, message = "ข้อมูลไม่ถูกต้อง" });
+            return Json(new { success = false, message = "Invalid data provided." });
         }
-
-        // Create a Food object from the received parameters
-        var foodToEdit = new Food
-        {
-            Region = region,
-            Product = product,
-            Quantity = int.Parse( quantity),
-            UnitPrice = unitPrice,
-            TotalPrice = decimal.Parse(quantity) * unitPrice
-        };
-
         try
         {
-            var message = _foodService.Edit(foodToEdit);
+            var message = _foodService.Edit(food);
             return Json(new { success = true, message });
         }
         catch (Exception ex)
@@ -75,16 +71,16 @@ public class FoodController : Controller
         }
     }
 
-    // ปรับปรุงเมธอด Delete เพื่อรับข้อมูลเป็น Food object
+    // Handles deleting a food item from a form-urlencoded payload
     [HttpPost]
     public IActionResult Delete([FromForm] Food food)
     {
         if (food == null || string.IsNullOrEmpty(food.Product))
-            return Json(new { success = false, message = "ข้อมูลว่างหรือ Product ไม่ถูกต้อง" });
-
+        {
+            return Json(new { success = false, message = "Invalid data provided." });
+        }
         try
         {
-            // ส่ง Food object ที่มี OrderDate, Region, และ Product ไปยัง service
             var message = _foodService.Delete(food);
             return Json(new { success = true, message });
         }
@@ -94,21 +90,25 @@ public class FoodController : Controller
         }
     }
 
+    // Searches for food items and returns a JSON result
     [HttpGet]
     public IActionResult Search(string product)
     {
         var searchResult = _foodService.Search(product);
-
-        // Return the search result as a JSON object
         return Json(searchResult);
     }
 
+    // Filters food items and returns a JSON result
     [HttpGet]
     public IActionResult Filter(string date)
     {
+        // Assuming your fillter method is renamed to Filter in the service
         var filterResult = _foodService.fillter(date);
-        return PartialView("_FoodTable", filterResult);
+        // Returning JSON is more flexible for front-end frameworks
+        return Json(filterResult);
     }
+
+    // Sorts food items and returns a JSON result
     [HttpGet]
     public IActionResult Sort(string sortBy, string sortDir)
     {
